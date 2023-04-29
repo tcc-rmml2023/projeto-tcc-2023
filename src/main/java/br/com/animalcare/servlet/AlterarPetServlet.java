@@ -23,13 +23,34 @@ public class AlterarPetServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			doPost(request, response);
+			
+			String id = request.getParameter("id_pet");
+			int id_pet = Integer.parseInt(id);
+			
+			try {
+				DaoPet daoPet = new DaoPet();
+				Pet pet = new Pet();
+				
+				pet.setId_pet(id_pet);
+						
+				daoPet.buscaPetPorId(pet);
+				
+				request.setAttribute("pet", pet);
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+;			
+			RequestDispatcher rd = request.getRequestDispatcher("alterar_pet.jsp");
+			rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
 			DaoPet daoPet = new DaoPet();
 			Ong ong = new Ong();
+			
 			boolean alterado = false;
 			
 			HttpSession session = request.getSession();

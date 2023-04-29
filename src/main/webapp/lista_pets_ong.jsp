@@ -44,8 +44,8 @@ String msg = (String) request.getAttribute("msg");
                             <tr><td> Ong</td><td><c:out value="${obj.ong_nome}"/></td></tr>
                             <tr><td> ID Ong</td><td><c:out value="${obj.id_ong}"/></td></tr>
                         </table>
-                        <a href="AlterarPetServlet?id_pet=${obj.id_pet }" class="btn btn-primary-crud py-2 px-4">Alterar</a>
-                  	    <a href="ExcluirPetServlet?id_pet=${obj.id_pet }" class="btn btn-primary-crud py-2 px-4">Excluir</a>
+                        <a href="AlterarPetServlet?id_pet=${obj.id_pet}" class="btn btn-primary-crud py-2 px-4">Alterar</a>
+                  	    <a href="ExcluirPetServlet?id_pet=${obj.id_pet}" class="btn btn-primary-crud py-2 px-4">Excluir</a>
                        </p>
                        </div>
                        

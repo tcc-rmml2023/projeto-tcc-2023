@@ -179,4 +179,30 @@ public class DaoPet {
 		}
 		return listaPetsOng;
 	}
+	
+	public Pet buscaPetPorId(Pet pet) {
+		
+		Pet petAlterado = new Pet();
+		String sql = "SELECT * FROM tb_pet WHERE = ? ";
+		
+		try {
+			PreparedStatement stmt = c.prepareStatement(sql);
+			
+			stmt.setInt(1, pet.getId_pet());
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				petAlterado.setId_pet(rs.getInt(1));
+				petAlterado.setNome_pet(rs.getString(2));
+				petAlterado.setIdade(rs.getString(3));
+				petAlterado.setGenero(rs.getString(4));
+				petAlterado.setObs(rs.getString(5));
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return petAlterado;
+	}
 }
