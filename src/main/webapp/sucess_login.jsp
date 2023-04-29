@@ -24,7 +24,7 @@ String msg = (String) request.getAttribute("msg");
 		<%
  			Ong ong = (Ong) session.getAttribute("usuarioLogado");
  			if (ong.getEmail() != null) {
- 				out.print(ong.getEmail());
+ 				out.print(ong.getNome_ong());
  				}
 		 %>
 	</a>
