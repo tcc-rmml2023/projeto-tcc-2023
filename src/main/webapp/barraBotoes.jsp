@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 </head>
 <body>
 	<div class="container-fluid">
@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
                 	<a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="../animalcare/PetServlet?action=listarTodosPets" class="nav-item nav-link">Animais</a>
+                    <a href="PetServlet?action=listarTodosPets" class="nav-item nav-link">Animais</a>
                     <a href="index_ongs.jsp" class="nav-item nav-link">ONGs</a>
                     <a href="quem_somos.jsp" class="nav-item nav-link">Quem Somos</a>
                     <a href="feedback.jsp" class="nav-item nav-link">Feedback</a>

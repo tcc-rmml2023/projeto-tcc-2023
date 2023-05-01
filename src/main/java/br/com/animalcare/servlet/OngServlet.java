@@ -23,10 +23,10 @@ public class OngServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		RequestDispatcher rd = request.getRequestDispatcher("cadastrar_ong.jsp");
 		rd.forward(request, response);
-	}
+		}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -58,7 +58,7 @@ public class OngServlet extends HttpServlet {
 			cadastrado = ongDao.inserirOng(alterarOng);
 
 			if (cadastrado) {
-				RequestDispatcher rd = request.getRequestDispatcher("sucess_cadastro.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("sucess_cadastro_ong.jsp");
 				rd.forward(request, response);
 			} else {
 				request.setAttribute("erro", "Cadastro não realizado. Verifique as informações!");

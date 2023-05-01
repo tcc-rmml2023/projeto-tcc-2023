@@ -50,7 +50,6 @@ public class DaoOng {
 				sucesso = true;
 			}
 			stmt.close();
-
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -60,7 +59,9 @@ public class DaoOng {
 
 	public boolean alterarOng(Ong ong) {
 		boolean sucesso = false;
-		String sql = "UPDATE tb_ong SET nome_ong =?, telefone =?, cnpj =?, cep =?, logradouro =?, numero =?, complemento =?, bairro =?, cidade =?, uf =?, email =?, senha =? WHERE id_ong = ?";
+		String sql = "UPDATE tb_ong SET nome_ong = ?, telefone = ?, cnpj = ?, cep = ?, "
+				+ " logradouro = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, uf = ?, "
+				+ " email = ?, senha = ? WHERE id_ong = ? ";
 
 		try {
 			PreparedStatement stmt = c.prepareStatement(sql);
@@ -84,6 +85,7 @@ public class DaoOng {
 			if (rowsAffected > 0) {
 				sucesso = true;
 			}
+			stmt.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -91,16 +93,16 @@ public class DaoOng {
 		return sucesso;
 	}
 
-	public Ong buscarOngPorCnpj(Ong ong) {
+	public Ong buscarOngPorId(Ong ong) {
 		
 		Ong ongEncontrada = null;
 		
-		String sql = "SELECT * FROM tb_ong WHERE cnpj = ?";
+		String sql = "SELECT * FROM tb_ong WHERE id_ong = ?";
 
 		try {
 			PreparedStatement stmt = c.prepareStatement(sql);
 
-			stmt.setLong(1, ong.getCnpj());
+			stmt.setLong(1, ong.getId_ong());
 
 			ResultSet rsOng = stmt.executeQuery();
 			if (rsOng.next()) {
@@ -141,7 +143,6 @@ public class DaoOng {
 				sucesso = true;
 			}
 			stmt.close();
-			c.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();

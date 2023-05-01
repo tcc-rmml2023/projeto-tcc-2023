@@ -1,9 +1,5 @@
 <%@page import="br.com.animalcare.bean.Ong"%>
 
-<%
-String msg = (String) request.getAttribute("msg");
-%>
-
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     
@@ -19,16 +15,15 @@ String msg = (String) request.getAttribute("msg");
 	<!-- Topbar Start -->
     <jsp:include page="barraBotoesOng.jsp"></jsp:include>
     <!-- Topbar End -->
-    <a>
-          <%
-			 Ong ong = (Ong) session.getAttribute("usuarioLogado");
-			 if(ong.getEmail() != null){
-			 out.print(ong.getNome_ong());
-			 }
-		 %>
-     </a>
+    
+    <!-- Ong logada -->
+    <jsp:include page="ongLogada.jsp"></jsp:include>
+    
      
-     <p><a>Preencha o formulário abaixo</a>
+     <div>
+     	<p><a>Preencha o formulário abaixo com as informações do pet!</a><br><br>
+     </div>
+  
       <form name="inserir" method="POST" action="InserirPetServlet">
       
        	 <input type="text" class="form-control-cep p-4" name="nome_pet" id="nome" value=""
@@ -49,8 +44,9 @@ String msg = (String) request.getAttribute("msg");
                                     
         <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
                name="enviar" value="Inserir"><br><br>  
-          <%if(msg != null ){out.println(msg);} %>     
+               
       </form>
+      <div> ${msg}</div>
       
     <!-- Footer Start -->
     <jsp:include page="rodape.jsp"></jsp:include>

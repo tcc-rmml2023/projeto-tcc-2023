@@ -42,7 +42,6 @@ public class PetServlet extends HttpServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("alterar_pet.jsp");
 					rd.forward(request, response);
 				}
-				
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -60,7 +59,8 @@ public class PetServlet extends HttpServlet {
 			request.setAttribute("lista", lista);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("lista_pets_adocao.jsp");
-			rd.forward(request, response);	
+			rd.forward(request, response);
+
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -88,11 +88,5 @@ public class PetServlet extends HttpServlet {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	
-	protected void alterarPet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
 	}
 }

@@ -28,6 +28,7 @@
                  		<c:forEach items="${lista }" var="obj">
                   		<p>	
                   		<table class="tabela" border="1" >
+                  			<tr><td> ID</td><td><c:out value="${obj.id_pet}"/></td></tr>
                         	<tr><td> Nome</td><td><c:out value="${obj.nome_pet}"/></td></tr>
                             <tr><td> Idade</td><td><c:out value="${obj.idade}"/></td></tr>
                             <tr><td> Genero</td><td><c:out value="${obj.genero}"/></td></tr>
@@ -35,7 +36,7 @@
                             <tr><td> Ong</td><td><c:out value="${obj.ong_nome}"/></td></tr>
                             <tr><td> Cidade</td><td><c:out value="${obj.ong_cidade}"/></td></tr>
                         </table>
-                        <a href="solicitacao_adocao.jsp" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">ADOTE</a>	
+                        <a href="AdocaoServlet?id_pet=${obj.id_pet}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">ADOTE</a>	
                         </p>
                   		</c:forEach>
                         

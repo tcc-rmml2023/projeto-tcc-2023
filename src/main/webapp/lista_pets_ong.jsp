@@ -1,36 +1,33 @@
 <%@page import="br.com.animalcare.bean.Ong"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%String msg = (String) request.getAttribute("msg");%>
 
-<%
-String msg = (String) request.getAttribute("msg");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
         
 <!DOCTYPE html>
 <html lang="pt-br">
-<jsp:include page="cabecalho.jsp"></jsp:include>
+<%@include file="cabecalho.jsp"%>
 
 <body>
     <!-- Topbar Start -->
-    <jsp:include page="barraBotoesOng.jsp"></jsp:include>
+    <%@include file="barraBotoes.jsp"%>
     <!-- Topbar End -->
-   					 <a>
-                    	<%
-							Ong ong = (Ong) session.getAttribute("usuarioLogado");
-							if(ong.getEmail() != null){
-							out.print(ong.getNome_ong());
-							}
-						%>
-                    </a>
+    
+    <!-- Ong logada -->
+    <jsp:include page="ongLogada.jsp"></jsp:include>
+   					 
         <div class="d-flex flex-column text-center mb-5 pt-5">
         
             <h6 class="display-4 m-0"><span class="text-primary">Lista de pets</span></h6></div>
         <div class="row pb-3">
             <div class="col-lg-4 mb-4">
-               <a><p><%if(msg !=null){out.println(msg);} %></p></a>
+            
+              <div>
+              		${msg}
+              </div>
                   <c:forEach items="${lista}" var="obj">
                   <div class="card border-0 mb-2">
                   		<p>
@@ -52,7 +49,7 @@ String msg = (String) request.getAttribute("msg");
                   		</c:forEach>
                     </div>
                 </div>
-           
+           	
            <!--div class="col-lg-4 mb-4">
                 <div class="card border-0 mb-2">
                     <img class="card-img-top" src="img/blog-2.jpg" alt="">
@@ -138,7 +135,7 @@ String msg = (String) request.getAttribute("msg");
     <!-- Template Javascript -->
     <script src="./resources/js/main.js"></script>
  <!-- Footer Start -->
- <jsp:include page="rodape.jsp"></jsp:include>
+ <%@include file="rodape.jsp"%>
  <!-- Footer End -->
 </body>
 </html>

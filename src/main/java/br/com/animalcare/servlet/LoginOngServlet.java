@@ -50,8 +50,7 @@ public class LoginOngServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("usuarioLogado", loginOng);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("sucess_login.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("PetServlet?action=listarPetsPorOng");
 			}
 
 			else {

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -8,15 +8,15 @@
         <div class="row pt-5">
             <div class="col-lg-4 col-md-12 mb-5">
                 <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Animal</span>CARE</h1>
-                <p class="m-0">A AnimalCARE È uma instituiÁ„o de apoio ‡ adoÁ„o. Fazemos o contato entre o adotante e o adotado. 
-                    Nosso papel È ajudar o animalzinho encontrar o seu dono, de forma r·pida e cuidadosa. 
+                <p class="m-0">A AnimalCARE √© uma institui√ß√£o de apoio √† ado√ß√£o. Fazemos o contato entre o adotante e o adotado. 
+                    Nosso papel √© ajudar o animalzinho encontrar o seu dono, de forma r√°pida e cuidadosa. 
                 </p>
             </div>
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-5">
                         <h5 class="text-primary mb-4">Nosso contato</h5>
-                        <p><i class="fa fa-map-marker-alt mr-2"></i>EndereÁo fictÌcio, 200. S„o Paulo/SP</p>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>Endere√ßo fict√≠cio, 200. S√£o Paulo/SP</p>
                         <p><i class="fa fa-phone-alt mr-2"></i>+55 11 9875 4321</p>
                         <p><i class="fa fa-envelope mr-2"></i>contato@animalcare.org</p>
                         <div class="d-flex justify-content-start mt-4">
@@ -31,9 +31,9 @@
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-white mb-2" href="https://www.gov.br/ibama/pt-br" target="_blank"><i class="fa fa-angle-right mr-2"></i>Ibama</a>
                             <a class="text-white mb-2" href="https://ilm.org.br" target="_blank"><i class="fa fa-angle-right mr-2"></i>Instituto Luisa Mell</a>
-                            <a class="text-white mb-2" href="http://www.uipa.org.br" target="_blank"><i class="fa fa-angle-right mr-2"></i>Uni„o protetora dos animais</a>
+                            <a class="text-white mb-2" href="http://www.uipa.org.br" target="_blank"><i class="fa fa-angle-right mr-2"></i>Uni√£o protetora dos animais</a>
                             <a class="text-white mb-2" href="https://www.amorempatas.com"><i class="fa fa-angle-right mr-2"></i>Instituto Amor em Patas</a>
-                            <a class="text-white" href="./index.html"><i class="fa fa-angle-right mr-2"></i>p·gina inicial</a>
+                            <a class="text-white" href="./index.html"><i class="fa fa-angle-right mr-2"></i>p√°gina inicial</a>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">

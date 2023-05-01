@@ -27,12 +27,8 @@
 		</p>
 		
 		<input type="submit" value="Entrar" />
-		<p>
-			<%
-			if (msg != null)
-				out.print(msg);
-			%>
-		</p>
+		
+		<div>${msg}</div>
 
 	</form>
 	<div class="container-fluid pt-5"></div>

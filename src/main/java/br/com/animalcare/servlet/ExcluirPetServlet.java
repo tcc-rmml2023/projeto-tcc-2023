@@ -42,12 +42,11 @@ public class ExcluirPetServlet extends HttpServlet {
 			pet.setId_ong(ong.getId_ong());
 			
 			boolean excluido = daoPet.excluirPet(pet, ong);
-			
 			if(excluido) {
-				request.setAttribute("msg", "Pet excluído com sucesso!!");
+				request.setAttribute("msg", "Pet excluído com sucesso!!");	
 			}
 			else {
-				request.setAttribute("msg", "Erro ao excluir pet!! Tente novamente!");
+				request.setAttribute("msg", "Erro ao tentar excluír pet!! Tente novamente");			
 			}
 			RequestDispatcher rd = request.getRequestDispatcher("PetServlet?action=listarPetsPorOng");
 			rd.forward(request, response);
