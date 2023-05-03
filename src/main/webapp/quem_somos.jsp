@@ -10,7 +10,7 @@
 <!-- Topbar Start -->
 <jsp:include page="barraBotoes.jsp"></jsp:include>
 <!-- Topbar End -->
-
+<div class="container py-5">
 <div class="row pt-6">
             <div class="d-flex flex-column text-center mb-5">
               
@@ -45,7 +45,7 @@
       
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-5">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
                     <img class="card-img-top" src="./resources/img/Luciano.png" alt="">
                     <div class="card-body text-center p-0">
@@ -55,16 +55,14 @@
                             
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                             <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" target="_blank" href="https://www.linkedin.com/in/luciano-bento-034251160/"><i class="fab fa-linkedin-in"></i></a>
+                         
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
                     <img class="card-img-top" src="./resources/img/Robson.png" alt="">
                     <div class="card-body text-center p-0">
@@ -73,16 +71,13 @@
                             <i>BackEnd</i>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;"  href="#"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
                     <img class="card-img-top" src="./resources/img/Murilo.png" alt="">
                     <div class="card-body text-center p-0">
@@ -90,29 +85,24 @@
                             <h5>Murilo Cavalcanti</h5>
                             <i>FrontEnd</i>
                         </div>
-                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 20px; height: 20px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 20px; height: 20px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 20px; height: 20px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 20px; height: 20px;" href="#"><i class="fab fa-instagram"></i></a>
+ 						<div class="team-social d-flex align-items-center justify-content-center bg-dark">
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" target="_blank" href="https://www.linkedin.com/in/murilo0300/"><i class="fab fa-linkedin-in"></i></a>
+                           
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
                     <img class="card-img-top" src="./resources/img/Marcio.jpg" alt="">
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-light">
-                            <h5>Marcio</h5>
+                            <h5>Marcio Sousa</h5>
                             <i>Equipe de gerenciamento</i>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                           <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" target="_blank" href="https://www.linkedin.com/in/marciosousa4/"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
@@ -121,7 +111,7 @@
         </div>
     </div>
     <!-- Team End -->
-
+</div>
 
  <!-- Footer Start -->
  <jsp:include page="rodape.jsp"></jsp:include>

@@ -14,7 +14,8 @@
 
 <!-- Topbar Start -->
 <jsp:include page="barraBotoes.jsp"></jsp:include>
-<!-- Topbar End -->   
+<!-- Topbar End -->  
+     <div class="row py-5"> 
 
 	<h1>Faça seu login</h1>
 	<form method="POST" action="LoginOngServlet">
@@ -31,6 +32,7 @@
 		<div>${msg}</div>
 
 	</form>
+	</div>
 	<div class="container-fluid pt-5"></div>
 	<!-- JavaScript Libraries -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
