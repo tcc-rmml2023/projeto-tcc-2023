@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 <meta charset="utf-8">
 </head>
@@ -30,7 +30,7 @@
                 <div class="navbar-nav mr-auto py-0"> 
                 	<a href="AtualizarOngServlet?id_ong=<%ong.getId_ong();%>" class="nav-item nav-link">Cadastro</a>
 					<a href="../animalcare/PetServlet?action=listarPetsPorOng" class="nav-item nav-link">Pets</a>
-					<a href="../animalcare/PetServlet?action=inserirPets" class="nav-item nav-link">Adicionar Pets</a>
+					<a href="../animalcare/InserirPetServlet" class="nav-item nav-link">Adicionar Pets</a>
                     <a href="LogoutOngServlet" class="nav-item nav-link">Sair</a>
                 </div>
             </div>

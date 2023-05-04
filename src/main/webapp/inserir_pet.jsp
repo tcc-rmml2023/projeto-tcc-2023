@@ -8,17 +8,18 @@
 <html lang="pt-br">
 
 <!-- link head -->
-<jsp:include page="cabecalho.jsp"></jsp:include>
+<%@include file="cabecalho.jsp"%>
 
 <body>
 
 	<!-- Topbar Start -->
-    <jsp:include page="barraBotoesOng.jsp"></jsp:include>
+     <%@include file="barraBotoesOng.jsp"%>
     <!-- Topbar End -->
     
     <!-- Ong logada -->
     <jsp:include page="ongLogada.jsp"></jsp:include>
     
+    <div> ${msg}</div>
      
      <div>
      	<p><a>Preencha o formulário abaixo com as informações do pet!</a><br><br>
@@ -46,10 +47,9 @@
                name="enviar" value="Inserir"><br><br>  
                
       </form>
-      <div> ${msg}</div>
       
     <!-- Footer Start -->
-    <jsp:include page="rodape.jsp"></jsp:include>
+     <%@include file="rodape.jsp"%>
     <!-- Footer End -->
 </body>
 </html>

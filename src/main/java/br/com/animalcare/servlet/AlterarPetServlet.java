@@ -74,12 +74,14 @@ public class AlterarPetServlet extends HttpServlet {
 			
 			boolean alterado = daoPet.alterarPet(pet);
 			if(alterado) {
+				RequestDispatcher rd = request.getRequestDispatcher("sucess_alterar_pet.jsp");
 				request.setAttribute("msg", "Pet alterado com sucesso!!");
+				rd.forward(request, response);
 			}
+			
 			else {
-				request.setAttribute("msg", "Erro ao excluir pet!! Tente novamente!");
+				response.sendRedirect("PetServlet?action=listarPetsPorOng");
 			}
-			response.sendRedirect("PetServlet?action=listarPetsPorOng");
 		} 
 		catch (Exception e) {
 			e.printStackTrace();

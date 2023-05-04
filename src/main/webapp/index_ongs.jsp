@@ -1,12 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 	<!-- link head -->
-	<jsp:include page="cabecalho.jsp"></jsp:include>
+	<%@include file="cabecalho.jsp"%>
+	
 <body>
+
 	<!-- Topbar Start -->
-	<jsp:include page="barraBotoes.jsp"></jsp:include>
+	<%@include file="barraBotoes.jsp"%>
 	<!-- Topbar End -->
 	
 	<!-- About Start -->
@@ -15,14 +18,14 @@
             <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
                 <h2 class="text-secondary mb-3">Apresentando o </h2>
                 <h1 class="display-4 mb-4"><span class="text-primary">Adotante</span> ao <span class="text-secondary">Adotado</span></h1>
-                <h5 class="text-muted mb-3">A Animal.CARE È uma instituiÁ„o de apoio ‡ adoÁ„o. Fazemos o contato entre o adotante e o adotado. Nosso papel È ajudar o animalzinho encontrar o seu dono, de forma r·pida e cuidadosa.</h5>
+                <h5 class="text-muted mb-3">A Animal.CARE √© uma institui√ß√£o de apoio √† ado√ß√£o. Fazemos o contato entre o adotante e o adotado. Nosso papel √© ajudar o animalzinho encontrar o seu dono, de forma r√°pida e cuidadosa.</h5>
                 <p class="mb-4">Cadastre sua ONG conosco</p>
                 <ul class="list-inline">
                     <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Anuncios de animais</h5></li>
-                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>LocalizaÁ„o facilitada</h5></li>
+                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Localiza√ß√£o facilitada</h5></li>
                     <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Contato direto com o adotante</h5></li>
                 </ul>
-                <a href="OngServlet" class="btn btn-lg btn-primary mt-3 px-4">Cadastrar ONG</a><!--link para forms de adoÁ„o-->
+                <a href="OngServlet" class="btn btn-lg btn-primary mt-3 px-4">Cadastrar ONG</a><!--link para forms de ado√ß√£o-->
             </div>
             <div class="col-lg-5">
                 <div class="row px-3">
@@ -42,7 +45,7 @@
     <!-- About End -->
 
 	<!-- Footer Start -->
-	<jsp:include page="rodape.jsp"></jsp:include>
+	<%@include file="rodape.jsp"%>
 	<!-- Footer End -->
 </body>
 </html>

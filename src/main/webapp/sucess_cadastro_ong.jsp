@@ -6,11 +6,11 @@
 <html lang="pt-br">
 
 <!-- link head -->
-<jsp:include page="cabecalho.jsp"></jsp:include>
+<%@include file="cabecalho.jsp"%>
 
 <body>
     <!-- Topbar Start -->
-    <jsp:include page="barraBotoes.jsp"></jsp:include>
+    <%@include file="barraBotoes.jsp"%>
     <!-- Topbar End -->
 
     <!-- Contact Start -->
@@ -44,7 +44,7 @@
     <script src="./resources/js/main.js"></script>
     
    <!-- Footer Start -->
-   <jsp:include page="rodape.jsp"></jsp:include>
+   <%@include file="rodape.jsp"%>
    <!-- Footer End -->
 </body>
 

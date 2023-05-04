@@ -15,58 +15,60 @@
 <!-- Ong logada -->
 <jsp:include page="ongLogada.jsp"></jsp:include>
 
+  	<a> ${msg}</a><br><br>
+
 	<h5>Informações do cadastro</h5>
-	<form name="atualizar_ong" method="POST" action="AtualizarOngServlet">
+	<form name="atualizar_ong" method="POST" action="sucess_alterar_ong.jsp">
 	
 		<input type="text" class="form-control-cep p-4" name="id_ong"  readonly="readonly"
-		 value="<%out.println(request.getAttribute("id_ong"));%>"><br><br>
+		 value=""><br><br>
 	
 		<input type="text" class="form-control-cep p-4" name="nome_ong" 
-		 value="<%out.println(request.getAttribute("nome_ong"));%>" 
+		 value="" 
     	 placeholder="Nome da Ong"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="telefone"  maxlength="11"
-		 value="<%out.println(request.getAttribute("telefone"));%>" 
+		 value="" 
     	 placeholder="Telefone"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="cnpj"  maxlength="11"
-		 value="<%out.println(request.getAttribute("cnpj"));%>" 
+		 value="" 
     	 placeholder="CNPJ"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="cep" maxlength="8"
-		 value="<%out.println(request.getAttribute("cep"));%>" 
+		 value="" 
     	 placeholder="00000-000"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="logradouro" 
-		 value="<%out.println(request.getAttribute("logradouro"));%>" 
+		 value="" 
     	 placeholder="Logradouro"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="numero" 
-		 value="<%out.println(request.getAttribute("numero"));%>" 
+		 value="" 
     	 placeholder="Número"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="complemento" 
-		 value="<%out.println(request.getAttribute("complemento"));%>" 
+		 value="" 
     	 placeholder="Complemento" ><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="bairro"  
-		 value="<%out.println(request.getAttribute("bairro"));%>" 
+		 value="" 
     	 placeholder="Bairro"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="cidade"  
-		 value="<%out.println(request.getAttribute("cidade"));%>" 
+		 value="" 
     	 placeholder="Cidade"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="uf" 
-		 value="<%out.println(request.getAttribute("uf"));%>" 
+		 value="" 
     	 placeholder="UF"><br><br>
     	 
     	 <input type="text" class="form-control-cep p-4" name="email"  
-		 value="<%out.println(request.getAttribute("cidade"));%>" 
+		 value="" 
     	 placeholder="E-mail"><br><br>
     	 
     	 <input type="password" class="form-control-cep p-4" name="senha" 
-		 value="<%out.println(request.getAttribute("senha"));%>" 
+		 value="" 
     	 placeholder="Senha"><br><br>
 		
 		<input type="submit" type="button" class="btn btn-primary py-2 px-4" name="Salvar" value="Salvar">
