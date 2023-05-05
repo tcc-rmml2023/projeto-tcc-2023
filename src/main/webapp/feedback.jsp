@@ -14,8 +14,7 @@
       <div class="container-fluid pt-5">
         <div class="d-flex flex-column text-center mb-5 pt-5">
             
-            <p class="display-4 m-1"><h2>Ajude a melhorar os nossos serviços</h2><span class="text-primary"></span></p>
-          
+          <p class="display-4 m-1"><h3>Ajude-nos a melhorar os nossos serviços, deixando o seu <i>feedback</i> abaixo</h3><span class="text-primary"></span></p>
 
         </div>
         <div class="row justify-content-center">
@@ -41,12 +40,7 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         
-                      <div class="control-group">
-                            <input type="text" class="form-control p-4" name="email" value="" 
-                            placeholder="Seu e-mail" required="required" 
-                            data-validation-required-message="Please enter your email" />
-                            <p class="help-block text-danger"></p>
-                        </div>
+                    
                         
                         <div class="control-group">
                         
@@ -57,10 +51,10 @@
                            
                         </div>
                         
-                       
+                       <br><br>
                         <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
                         name="enviar" value="Enviar">
-                    <br><br><br>
+                    
                     </form>
                 </div>
             </div>
