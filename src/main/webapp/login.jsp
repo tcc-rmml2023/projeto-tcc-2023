@@ -9,13 +9,18 @@
 <html lang="pt-br">
 
 <!-- link head -->
-<jsp:include page="cabecalho.jsp"></jsp:include>
+<%@include file="cabecalho.jsp"%>
 <body>
 
 <!-- Topbar Start -->
+<<<<<<< HEAD
 <jsp:include page="barraBotoes.jsp"></jsp:include>
 <!-- Topbar End -->  
      <div class="row py-5"> 
+=======
+<%@include file="barraBotoes.jsp"%>
+<!-- Topbar End -->   
+>>>>>>> eda80b420abe23ecf4d47270fbe9dc538887438f
 
 	<h1>Faça seu login</h1>
 	<form method="POST" action="LoginOngServlet">
@@ -53,7 +58,7 @@
 	<script src="./resources/js/main.js"></script>
 	
 <!-- Footer Start -->
-<jsp:include page="rodape.jsp"></jsp:include>   
+<%@include file="rodape.jsp"%>   
 <!-- Footer End -->
 </body>
 </html>

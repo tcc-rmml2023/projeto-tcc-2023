@@ -5,7 +5,7 @@
     
     
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <!-- link head -->
 <%@include file="cabecalho.jsp"%>

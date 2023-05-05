@@ -1,30 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 
 <!-- link head -->
-<jsp:include page="cabecalho.jsp"></jsp:include>
+<%@include file="cabecalho.jsp"%>
 <body>
 
 <!-- Topbar Start -->
-<jsp:include page="barraBotoes.jsp"></jsp:include>
+<%@include file="barraBotoes.jsp"%>
 <!-- Topbar End -->
 <div class="container py-5">
 <div class="row pt-6">
             <div class="d-flex flex-column text-center mb-5">
               
-                <h1 class="mb-3">Nossa HistÛria</h1>
+                <h1 class="mb-3">Nossa Hist√≥ria</h1>
           
             </div>
-             <!--AQUI DEVE-SE COLOCAR A HIST”RIA-->
+             <!--AQUI DEVE-SE COLOCAR A HIST√ìRIA-->
    
                    <div class="mb-6">
                        <img class="img-fluid w-100 mb-4" src="./resources/img/imagem1.jpg" alt="Image">
-                       <h5>A <i>Animal Care</i> surgiu em 2022, em um projeto de conclus„o do curso de An·lise e Desenvolvimento de Sistemas, na Fatec Zona Sul "Dom Paulo Evaristo Arns" 
-                        Os alunos: Luciano, Murilo e Robson pensaram em uma plataforma que integra os que possuem interesse em adotar algum PEt, ‡s ONGs que prÛximas, que est„o cadastradas
+                       <h5>A <i>Animal Care</i> surgiu em 2022, em um projeto de conclus√£o do curso de An√°lise e Desenvolvimento de Sistemas, na Fatec Zona Sul "Dom Paulo Evaristo Arns" 
+                        Os alunos: Luciano, Murilo e Robson pensaram em uma plataforma que integra os que possuem interesse em adotar algum PEt, √†s ONGs que pr√≥ximas, que est√£o cadastradas
                         no site. <br><br> 
-                        A plataforma possui acesso reservado ‡s ONGs, para cadastro de animais.  
+                        A plataforma possui acesso reservado √†s ONGs, para cadastro de animais.  
     
                        </h5>
                        
@@ -114,7 +114,7 @@
 </div>
 
  <!-- Footer Start -->
- <jsp:include page="rodape.jsp"></jsp:include>
+ <%@include file="rodape.jsp"%>
  <!-- Footer End -->
 </body>
 </html>

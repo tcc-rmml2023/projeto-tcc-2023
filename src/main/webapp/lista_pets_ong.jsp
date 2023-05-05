@@ -13,7 +13,7 @@
 
 <body>
     <!-- Topbar Start -->
-    <%@include file="barraBotoes.jsp"%>
+    <%@include file="barraBotoesOng.jsp"%>
     <!-- Topbar End -->
     
     <!-- Ong logada -->
@@ -25,9 +25,6 @@
         <div class="row pb-3">
             <div class="col-lg-4 mb-4">
             
-              <div>
-              		${msg}
-              </div>
                   <c:forEach items="${lista}" var="obj">
                   <div class="card border-0 mb-2">
                   		<p>

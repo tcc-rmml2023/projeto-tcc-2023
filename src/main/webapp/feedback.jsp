@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <!-- link head -->
-<jsp:include page="cabecalho.jsp"></jsp:include>
+<%@include file="cabecalho.jsp"%>
 
 <body>
 
 	<!-- Topbar Start -->
-    <jsp:include page="barraBotoes.jsp"></jsp:include>
+    <%@include file="barraBotoes.jsp"%>
     <!-- Topbar End -->
       <div class="container-fluid pt-5">
         <div class="d-flex flex-column text-center mb-5 pt-5">
@@ -62,7 +62,7 @@
     </div>
 
 	<!-- Footer Start -->
-    <jsp:include page="rodape.jsp"></jsp:include>
+    <%@include file="rodape.jsp"%>
     <!-- Footer End -->
 </body>
 </html>

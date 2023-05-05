@@ -1,3 +1,4 @@
+package br.com.animalcare.servlet;
 
 
 import java.io.IOException;
@@ -60,5 +61,4 @@ public class AdocaoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -96,12 +96,16 @@ public class AtualizarOngServlet extends HttpServlet {
 			alterado = ongDao.alterarOng(alterarOng);
 			
 			if (alterado) {
-				request.setAttribute("msg", "Pet alterado com sucesso!!");
+				
+				RequestDispatcher rd = request.getRequestDispatcher("sucess_alterar_ong.jsp");
+				
+				request.setAttribute("msg", "Informações atualizadas com sucesso!!");
+				
+				rd.forward(request, response);
 			}
 			else {
-				request.setAttribute("msg", "Erro ao excluir pet!! Tente novamente!");
+				response.sendRedirect("PetServlet?action=listarPetsPorOng");
 			}
-			response.sendRedirect("PetServlet?action=listarPetsPorOng");
 		} 
 		catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

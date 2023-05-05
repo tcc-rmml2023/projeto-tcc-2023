@@ -3,14 +3,14 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <!-- link head -->
-<jsp:include page="cabecalho.jsp"></jsp:include>
+<%@include file="cabecalho.jsp"%>
 
 <body>
     <!-- Topbar Start -->
-    <jsp:include page="barraBotoes.jsp"></jsp:include>
+    <%@include file="barraBotoes.jsp"%>
     <!-- Topbar End -->
 
     <!-- Contact Start -->
@@ -21,8 +21,8 @@
     </div>
     <!-- Contact End -->
 
-     <!-- Footer Start -->
-   <jsp:include page="rodape.jsp"></jsp:include>
+   <!-- Footer Start -->
+   <%@include file="rodape.jsp"%>
    <!-- Footer End -->
 </body>
 

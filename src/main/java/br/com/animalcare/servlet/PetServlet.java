@@ -33,15 +33,6 @@ public class PetServlet extends HttpServlet {
 				if(acao.equals("listarPetsPorOng")) {
 					listarPetsPorOng(request, response);
 				}
-				
-				if(acao.equals("inserirPets")) {
-					RequestDispatcher rd = request.getRequestDispatcher("inserir_pet.jsp");
-					rd.forward(request, response);
-				}
-				if(acao.equals("alterarPet")) {
-					RequestDispatcher rd = request.getRequestDispatcher("alterar_pet.jsp");
-					rd.forward(request, response);
-				}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
