@@ -13,14 +13,13 @@
 <body>
 
 <!-- Topbar Start -->
-<<<<<<< HEAD
+
 <jsp:include page="barraBotoes.jsp"></jsp:include>
 <!-- Topbar End -->  
      <div class="row py-5"> 
-=======
+
 <%@include file="barraBotoes.jsp"%>
 <!-- Topbar End -->   
->>>>>>> eda80b420abe23ecf4d47270fbe9dc538887438f
 
 	<h1>Faça seu login</h1>
 	<form method="POST" action="LoginOngServlet">

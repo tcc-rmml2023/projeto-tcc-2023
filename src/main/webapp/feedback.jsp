@@ -14,7 +14,7 @@
       <div class="container-fluid pt-5">
         <div class="d-flex flex-column text-center mb-5 pt-5">
             
-          <p class="display-4 m-1"><h3>Ajude-nos a melhorar os nossos serviços, deixando o seu <i>feedback</i> abaixo</h3><span class="text-primary"></span></p>
+          <p class="display-4 m-1"><h3>Ajude-nos a melhorar os nossos serviÃ§os, deixando o seu <i>feedback</i> abaixo</h3><span class="text-primary"></span></p>
 
         </div>
         <div class="row justify-content-center">

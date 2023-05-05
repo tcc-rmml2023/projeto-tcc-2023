@@ -23,6 +23,8 @@
           
             <h4 class="text-secondary mb-3">Preencha o formulário</h4>
         </div>
+        
+        <div>${msg}</div>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">

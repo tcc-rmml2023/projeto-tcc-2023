@@ -41,9 +41,9 @@ public class EnviarEmail {
 
 		try {
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("animalcare.tcc@gmail.com", ""));
+			message.setFrom(new InternetAddress("animalcare.tcc@gmail.com"));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(
-					this.email.getEmailOng(), this.email.getEmailAdotante()));
+					this.email.getEmailAdotante()));
 	
 			message.setSubject("Email de confirmação!!");
 			message.setContent(email.getMensagem(),"text/html; charset=utf-8");
