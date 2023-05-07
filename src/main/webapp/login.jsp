@@ -12,11 +12,35 @@
 <%@include file="cabecalho.jsp"%>
 <body>
 
+<<<<<<< HEAD
 <!-- Topbar Start --> 
+=======
+<!-- Topbar Start -->
+>>>>>>> 3f893f871d1d76d1889601017348dad8b8ac4097
 
 <%@include file="barraBotoes.jsp"%>
-<!-- Topbar End -->   
+<!-- Topbar End -->  
+    
+<!-- Topbar End -->  
+	<div class="container py-5">
+        <div class="row py-5">
+            <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
+                <h2 class="text-secondary mb-3">Faça seu login</h2> 
+                	<form method="POST" action="LoginOngServlet">
+						<p>
+							<label>E-mail</label> <input type="email" class="form-control p-3 name="email"/>
+						</p>
+						
+						<p>
+							<label>Senha</label> <input type="password" class="form-control p-3 name="senha" />
+						</p>
+						
+						<input type="submit" class="btn btn-primary py-2 px-4"  value="Entrar" />
+						
+						
+						<div>${msg}</div>
 
+<<<<<<< HEAD
 	<h1>Faça seu login</h1>
 	<div class="row py-5">
 	<form method="POST" action="LoginOngServlet">
@@ -31,8 +55,12 @@
 		<input type="submit" value="Entrar" />
 		
 		<div>${msg}</div>
+=======
+					</form>
+                </div>
+             </div>
+>>>>>>> 3f893f871d1d76d1889601017348dad8b8ac4097
 
-	</form>
 	</div>
 	<div class="container-fluid pt-5"></div>
 	<!-- JavaScript Libraries -->

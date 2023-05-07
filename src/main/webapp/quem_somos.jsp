@@ -71,7 +71,7 @@
                             <i>BackEnd</i>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;"  href="#"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" target="_blank"  href="https://www.linkedin.com/in/robson-sousa-67a452275/"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
