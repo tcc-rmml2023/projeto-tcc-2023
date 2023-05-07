@@ -4,6 +4,8 @@
  <head>
     <meta charset="utf-8">
     <title>AnimalCare</title>
+    <!-- Icone barra de endereços -->
+    <link rel="shortcut icon" type="imagex/png" href="./resources/img/icone.ico">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <link rel="icon" href="./resources/img/icone.png">

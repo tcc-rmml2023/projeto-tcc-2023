@@ -193,7 +193,13 @@ public class DaoPet {
 	
 	public Pet buscaPetPorId(Pet petEncontrado) {
 		
-		String sql = "SELECT * FROM tb_pet WHERE id_pet = ?";
+		String sql = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, "
+				+ "tb_pet.obs, "
+				+ "tb_ong.id_ong, tb_ong.nome_ong, tb_ong.email "
+				+ "FROM tb_pet "
+				+ "INNER JOIN tb_ong "
+				+ "ON tb_pet.id_ong = tb_ong.id_ong "
+				+ "WHERE tb_pet.id_pet = ? ";
 		
 		try {
 			PreparedStatement stmt = c.prepareStatement(sql);
@@ -208,7 +214,10 @@ public class DaoPet {
 				petEncontrado.setIdade(rs.getString(3));
 				petEncontrado.setGenero(rs.getString(4));
 				petEncontrado.setObs(rs.getString(5));
-				petEncontrado.setId_ong(6);
+				petEncontrado.setId_ong(rs.getInt(6));
+				petEncontrado.setOng_nome(rs.getString(7));
+				petEncontrado.setEmailOng(rs.getString(8));
+				
 			}
 			stmt.close();
 			c.close();

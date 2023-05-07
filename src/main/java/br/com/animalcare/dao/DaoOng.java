@@ -194,7 +194,7 @@ public class DaoOng {
 	public Ong buscarOngPorEmail(String email, String senha) {
 
 		Ong usuarioOng = null;
-		String sql = "SELECT * FROM tb_ong WHERE email = ? AND senha = ?";
+		String sql = " SELECT * FROM tb_ong WHERE email = ? AND senha = ? ";
 
 		try {
 			PreparedStatement stmt = c.prepareStatement(sql);

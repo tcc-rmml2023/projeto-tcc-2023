@@ -24,26 +24,14 @@
             <h4 class="text-secondary mb-3">Preencha o formulário</h4>
         </div>
         
-        <div>${msg}</div>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">
+                <div>${msg}</div><br><b></b>
                     <div id="success"></div>
                     <jsp:useBean id="pet" class="br.com.animalcare.bean.Pet" scope="request"></jsp:useBean>
                     <form name="cadastroAdotante" method="post" action="AdocaoServlet" >
-                    
-                    	<div class="control-group">
-                            <input type="text" class="form-control p-4" name="id_pet" readonly="readonly"
-                            value="<%out.println(request.getAttribute("id_pet"));%>"/>
-                             <p class=""></p>
-                        </div>
-                        
-                        <div class="control-group">
-                            <input type="text" class="form-control p-4" name="nome_pet" readonly="readonly"
-                             value="<%out.println(request.getAttribute("nome_pet"));%>"/>
-                             <p class=""></p>
-                        </div>
-                    
+                   
                         <div class="control-group">
                             <input type="text" class="form-control p-4" name="nome_adotante" value="" 
                             placeholder="Seu nome" required="required" 
@@ -72,8 +60,54 @@
                             data-validation-required-message="Please enter a subject"/>  
                             <p class="help-block text-danger"></p>
                         </div>
-                            <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
-                        name="enviar" value="Enviar">
+                        
+                        <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
+                        name="enviar" value="Enviar"><br><br><br>
+                        
+                        <h4>Informações do pet</h4>
+                        
+                        <div class="control-group">
+                           ID pet <input type="text" class="form-control p-4" name="id_pet" readonly="readonly"
+                            value="<%out.println(request.getAttribute("id_pet"));%>"/>
+                             <p class=""></p>
+                        </div>
+                        
+                        <div class="control-group">
+                           Nome pet <input type="text" class="form-control p-4" name="nome_pet" readonly="readonly"
+                             value="<%out.println(request.getAttribute("nome_pet"));%>"/>
+                             <p class=""></p>
+                        </div>
+                        
+                        <div class="control-group">
+                           Idade <input type="text" class="form-control p-4" name="idade" readonly="readonly"
+                             value="<%out.println(request.getAttribute("idade"));%>"/>
+                             <p class=""></p>
+                        </div>
+                        
+                        <div class="control-group">
+                            Genero<input type="text" class="form-control p-4" name="genero" readonly="readonly"
+                             value="<%out.println(request.getAttribute("genero"));%>"/>
+                             <p class=""></p>
+                        </div>
+                        
+                        <div class="control-group">
+                           Observações <input type="text" class="form-control p-4" name="obs" readonly="readonly"
+                             value="<%out.println(request.getAttribute("obs"));%>"/>
+                             <p class=""></p>
+                        </div>
+                        
+                        <div class="control-group">
+                           Ong <input type="text" class="form-control p-4" name="nome_ong" readonly="readonly"
+                             value="<%out.println(request.getAttribute("nome_ong"));%>"/>
+                             <p class=""></p>
+                        </div>
+                        
+                        <div class="control-group">
+                           Email ong <input type="text" class="form-control p-4" name="emailOng" readonly="readonly"
+                             value="<%out.println(request.getAttribute("emailOng"));%>"/>
+                             <p class=""></p>
+                        </div>
+         
                     <br><br><br>
                     </form>
                 </div>

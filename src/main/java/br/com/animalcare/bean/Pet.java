@@ -16,6 +16,7 @@ public class Pet implements Serializable{
 	private String obs;
 	private Integer id_ong;
 	private Integer id_adotante;
+	private String emailOng;
 	
 	private Adotante adotante;
 	private Ong ong;
@@ -110,6 +111,13 @@ public class Pet implements Serializable{
 	}
 	public void setObs(String obs) {
 		this.obs = obs;
+	}
+	
+	public String getEmailOng() {
+		return emailOng;
+	}
+	public void setEmailOng(String emailOng) {
+		this.emailOng = emailOng;
 	}
 	@Override
 	public int hashCode() {

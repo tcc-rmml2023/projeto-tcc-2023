@@ -36,6 +36,12 @@ public class AdocaoServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("solicitacao_adocao.jsp");
 			request.setAttribute("id_pet", pet.getId_pet());
 			request.setAttribute("nome_pet", pet.getNome_pet());
+			request.setAttribute("idade", pet.getIdade());
+			request.setAttribute("genero", pet.getGenero());
+			request.setAttribute("obs", pet.getObs());
+			request.setAttribute("nome_ong", pet.getOng_nome());
+			request.setAttribute("emailOng", pet.getEmailOng());
+			
 			rd.forward(request, response);
 			
 		}		
@@ -46,9 +52,6 @@ public class AdocaoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//String id = request.getParameter("id_pet");
-		//int id_pet = Integer.parseInt(id);
-		
 		try {
 			//DaoPet petDao = new DaoPet();
 			//Ong ong = new Ong();
@@ -56,22 +59,34 @@ public class AdocaoServlet extends HttpServlet {
 			
 			Email mail = new Email();
 			
+			mail.setEmailOng(request.getParameter("emailOng"));
 			mail.setEmailAdotante(request.getParameter("email"));
+			
 			
 			StringBuffer mensagem = new StringBuffer();
 			
-			mensagem.append("<h2 align='center'>AnimalCare</h2>");
-			mensagem.append("Informações Enviadas:<br/>");
+			mensagem.append("<h2 align='center'>AnimalCare - Solicitação de adoção</h2>");
+			mensagem.append("<br/>");
 			
+			mensagem.append("<h5>Informações do pet</h5>");
 			mensagem.append("ID pet: ");
 			mensagem.append(request.getParameter("id_pet"));
 			mensagem.append("<br/>");
 			
-			mensagem.append("Nome do pet:");
+			mensagem.append("Nome do pet: ");
 			mensagem.append(request.getParameter("nome_pet"));
 			mensagem.append("<br/>");
 			
-			mensagem.append("Nome: ");
+			mensagem.append("Ong: ");
+			mensagem.append(request.getParameter("nome_ong"));
+			mensagem.append("<br/>");
+			
+			mensagem.append("Email ong: ");
+			mensagem.append(request.getParameter("emailOng"));
+			mensagem.append("<br>");
+			
+			mensagem.append("<h5>Informações do adotante</h5>");
+			mensagem.append("Nome do adotante: ");
 			mensagem.append(request.getParameter("nome_adotante"));
 			mensagem.append("<br/>");
 			
@@ -87,21 +102,22 @@ public class AdocaoServlet extends HttpServlet {
 			mensagem.append(request.getParameter("telefone"));
 			mensagem.append("<br/>");
 			
-			mail.setMensagem(mensagem.toString());
+			mail.setSolicitacao(mensagem.toString());
 			
 			boolean enviou = mail.enviarGmail();
 			
 			if (enviou) {
 	            
-				RequestDispatcher rd = request.getRequestDispatcher("Dados enviados com sucesso.");
-				request.setAttribute("msg", "Dados enviados com sucesso.");
+				RequestDispatcher rd = request.getRequestDispatcher("solicitacao_adocao.jsp");
+				request.setAttribute("msg", "Solicitação enviada com enviada com sucesso."
+						+ " Aguarde contato.");
 				rd.forward(request, response);
 	           
-	        } else {
+	        } 
+			else {
 	            request.setAttribute("msg", "Não foi possível realizar a solicitação.");
 	            response.sendRedirect("solicitacao_adocao.jsp");
 	        }
-			
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
