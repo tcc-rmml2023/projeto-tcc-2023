@@ -1,12 +1,10 @@
-	@LucianoMarcioMuriloRobson2023
+	@LucianoMarcioMuriloRobson2023 - senha
 
-	tcc-rmml2023
+	tcc-rmml2023 - login
 
 	@lmmr2023
 
 	https://github.com/tcc-rmml2023/tcc-rmml2023.git
 
-	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
 
-	
-	(((abo/mbpAzkDXGU6TqJFbz8/3YPajCdYHTERCBPtUB0A)))
+	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

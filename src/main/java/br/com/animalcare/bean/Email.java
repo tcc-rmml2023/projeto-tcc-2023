@@ -51,22 +51,19 @@ public class Email {
 	}
 	
 	public boolean enviarGmail() {
+		
+		String myMail = "animalcare.tcc@gmail.com";
+		String passWord = "rmmlfatec2023";
 		boolean retorno = false;
 		// Get the session object
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.ssl.enable", "true");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
 
-		Session session = Session.getDefaultInstance(props, new Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-
-				return new PasswordAuthentication("animalcare.tcc@gmail.com", "rmmlfatec2023");
-
-			}
-		});
+		Session session = Session.getInstance(props);
 		
 		session.setDebug(true);
 
@@ -80,7 +77,7 @@ public class Email {
 			message.setContent(this.mensagem,"text/html; charset=utf-8");
 
 			//send message
-			Transport.send(message);
+			Transport.send(message, myMail, passWord);
 
 			retorno = true;
 		} 

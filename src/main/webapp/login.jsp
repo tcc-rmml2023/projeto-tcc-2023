@@ -12,16 +12,13 @@
 <%@include file="cabecalho.jsp"%>
 <body>
 
-<!-- Topbar Start -->
-
-<jsp:include page="barraBotoes.jsp"></jsp:include>
-<!-- Topbar End -->  
-     <div class="row py-5"> 
+<!-- Topbar Start --> 
 
 <%@include file="barraBotoes.jsp"%>
 <!-- Topbar End -->   
 
 	<h1>Faça seu login</h1>
+	<div class="row py-5">
 	<form method="POST" action="LoginOngServlet">
 		<p>
 			<label>E-mail</label> <input type="email" name="email" />

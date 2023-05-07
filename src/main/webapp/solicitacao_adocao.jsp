@@ -52,7 +52,7 @@
                         </div>
                         
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" name="cpf" value="" 
+                            <input type="text" class="form-control p-4" name="cpf" value="" maxlength="11"
                             placeholder="Seu CPF" 
                             required="required" data-validation-required-message="Please enter your email" />
                             <p class="help-block text-danger"></p>
@@ -66,24 +66,13 @@
                         </div>
                         
                         <div class="control-group">
-                            <input type="tel" onkeydown="return mascaraTelefone(event)" 
+                            <input type="tel" onkeydown="return mascaraTelefone(event)" maxlength="11"
                              class="form-control p-4" name="telefone" value="" 
                             placeholder="Telefone" required="required" 
                             data-validation-required-message="Please enter a subject"/>  
                             <p class="help-block text-danger"></p>
                         </div>
-                        
-                        <div class="control-group">
-                                CEP: <input type="text" class="form-control-cep p-4" name="cep" value="" maxlength="9" placeholder="00000-000" autofocus><br><br>
-                                <input type="text" class="form-control-endereco p-4"  name="endereco" value=""  placeholder="Logradouro">
-                                <input type="text" class="form-control-numero p-4" name="numero" value="" placeholder="Número"><br><br><br>
-                                <input type="text" class="form-control-complemento p-4" name="complemento" value="" placeholder="Complemento">
-                                <input type="text" class="form-control-bairro p-4" name="bairro" value=""  placeholder="Bairro"><br><br><br>    
-                                <input type="text" class="form-control-cidade p-4"  name="cidade" value=""  placeholder="Cidade">
-                                <input type="text" class="form-control-uf p-4" name="uf" value=""  placeholder="UF" >
-                               <br><br><br>                       		
-                        </div>
-                        <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
+                            <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
                         name="enviar" value="Enviar">
                     <br><br><br>
                     </form>

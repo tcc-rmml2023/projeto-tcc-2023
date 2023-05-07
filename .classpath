@@ -55,8 +55,5 @@
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Apache Software Foundation/Tomcat 9.0/lib/tomcat-websocket.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/Apache Software Foundation/Tomcat 9.0/lib/websocket-api.jar"/>
 	<classpathentry kind="lib" path="C:/Users/RobsonUser/Desktop/jars/jakarta.mail-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RobsonUser/Desktop/jars/jakarta.activation-api-2.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RobsonUser/Desktop/jars/angus-activation-2.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RobsonUser/Desktop/jars/angus-mail-2.0.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

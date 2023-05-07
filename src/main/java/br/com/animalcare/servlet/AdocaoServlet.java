@@ -71,6 +71,10 @@ public class AdocaoServlet extends HttpServlet {
 			mensagem.append(request.getParameter("nome_pet"));
 			mensagem.append("<br/>");
 			
+			mensagem.append("Nome: ");
+			mensagem.append(request.getParameter("nome_adotante"));
+			mensagem.append("<br/>");
+			
 			mensagem.append("CPF: ");
 			mensagem.append(request.getParameter("cpf"));
 			mensagem.append("<br/>");
@@ -94,7 +98,7 @@ public class AdocaoServlet extends HttpServlet {
 				rd.forward(request, response);
 	           
 	        } else {
-	            request.setAttribute("msg", "Não foi possível enviar as informações.");
+	            request.setAttribute("msg", "Não foi possível realizar a solicitação.");
 	            response.sendRedirect("solicitacao_adocao.jsp");
 	        }
 			
