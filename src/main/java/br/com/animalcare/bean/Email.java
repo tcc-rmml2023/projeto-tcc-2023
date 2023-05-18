@@ -5,7 +5,6 @@ import java.util.Properties;
 import jakarta.activation.DataHandler;
 import jakarta.activation.DataSource;
 import jakarta.activation.FileDataSource;
-import jakarta.mail.BodyPart;
 import jakarta.mail.Message;
 import jakarta.mail.PasswordAuthentication;
 import jakarta.mail.Session;
@@ -17,49 +16,57 @@ import jakarta.mail.internet.MimeMultipart;
 
 public class Email {
 
-	private String emailOng;
-	private String emailAdotante;
-	private String solicitacao;
+	private String emailTo;
+	private String emailCC;
+	private String message;
+	private String assunto;
 	
 	public Email() {
 	}
 
-	public Email(String emailOng, String emailAdotante, String solicitacao) {
+	public Email(String emailCC, String emailTo, String message, String assunto) {
 		super();
-		this.emailOng = emailOng;
-		this.emailAdotante = emailAdotante;
-		this.solicitacao = solicitacao;
+		this.emailCC = emailCC;
+		this.emailTo = emailTo;
+		this.message = message;
+		this.assunto = assunto;	}
+
+	public String getEmailCC() {
+		return emailCC;
 	}
 
-	public String getEmailOng() {
-		return emailOng;
+	public void setEmailCC(String emailCC) {
+		this.emailCC = emailCC;
 	}
 
-	public void setEmailOng(String emailOng) {
-		this.emailOng = emailOng;
+	public String getEmailTo() {
+		return emailTo;
 	}
 
-	public String getEmailAdotante() {
-		return emailAdotante;
+	public void setEmailTo(String emailTo) {
+		this.emailTo = emailTo;
 	}
 
-	public void setEmailAdotante(String emailAdotante) {
-		this.emailAdotante = emailAdotante;
+	public String getMessage() {
+		return message;
 	}
 
-	public String getSolicitacao() {
-		return solicitacao;
-	}
-
-	public void setSolicitacao(String solicitacao) {
-		this.solicitacao = solicitacao;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
+	public String getAssunto() {
+		return assunto;
+	}
+
+	public void setAssunto(String assunto) {
+		this.assunto = assunto;
+	}
+
 	public boolean enviarGmail() {
 		
-		String assunto = "Solicitação de adoção";
-		String myMail = "animalcare.tcc@gmail.com";
-		String passWord = "rjqpepcixapfpyij";
+		final String myMail = "animalcare.tcc@gmail.com";
+		final String passWord = "rjqpepcixapfpyij";
 		boolean retorno = false;
 		
 		Properties props = new Properties();
@@ -80,35 +87,31 @@ public class Email {
 		session.setDebug(true);
 
 		try {
+			MimeBodyPart logoPart = new MimeBodyPart();
+			
+			DataSource source = new FileDataSource("C:/img/icone.png");
+            
+			logoPart.setDataHandler(new DataHandler(source));
+            logoPart.setFileName("logo.png"); 
+
+            MimeBodyPart textBodyPart = new MimeBodyPart();
+            textBodyPart.setContent(this.message,"text/html;charset=utf-8");
+			
+            MimeMultipart mimeMultpart = new MimeMultipart();
+            mimeMultpart.addBodyPart(textBodyPart);
+            mimeMultpart.addBodyPart(logoPart);
+			
 			Message message = new MimeMessage(session);
 			
-			MimeMultipart multipart = new MimeMultipart();
-			
-			BodyPart bp = new MimeBodyPart();
-			
-			String htmlText = "<h5>logo animalcare</h5><img src=\"cid:image\">";
-			bp.setContent(htmlText, "text/html");
-			
-			multipart.addBodyPart(bp);
-			
-			bp = new MimeBodyPart();
-			
-			DataSource img = new FileDataSource("C:\\eclipse-teste\\animalcare\\src\\main\\webapp\\resources\\img\\icone.png");
-			
-			bp.setDataHandler(new DataHandler(img));
-			bp.setHeader("Content - ID", "<image>");
-			
-			multipart.addBodyPart(bp);
-			
 			message.setFrom(new InternetAddress(myMail));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(
-					this.emailAdotante));
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(
+					this.emailTo));
 			message.setRecipient(Message.RecipientType.CC, new InternetAddress(
-					this.emailOng));
+					this.emailCC));
 	
 			message.setSubject(assunto);
 			
-			message.setContent(this.solicitacao, "text/html; charset=utf-8");
+			message.setContent(mimeMultpart);
 			
 			Transport.send(message);
 

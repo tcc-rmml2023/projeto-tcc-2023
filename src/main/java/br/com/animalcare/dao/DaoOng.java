@@ -13,35 +13,37 @@ import br.com.animalcare.util.Conexao;
 
 public class DaoOng {
 
-	private final Connection c;
+	private final Connection conn;
 
 	public DaoOng() throws SQLException, ClassNotFoundException {
-		this.c = new Conexao().getConnection();
+		this.conn = new Conexao().getConnection();
 	}
 
 	public boolean inserirOng(Ong ong) {
 
 		boolean sucesso = false;
-		String sql = "INSERT INTO tb_ong (nome_ong, telefone, cnpj, cep, logradouro, numero, complemento ,bairro, cidade, uf, email, senha) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO tb_ong (nome_ong, telefone, cnpj, cep, logradouro, numero, complemento ,"
+				+ " bairro, cidade, uf, email, senha) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
-			PreparedStatement stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-			stmt.setString(1, ong.getNome_ong());
-			stmt.setString(2, ong.getTelefone());
-			stmt.setLong(3, ong.getCnpj());
-			stmt.setInt(4, ong.getCep());
-			stmt.setString(5, ong.getLogradouro());
-			stmt.setInt(6, ong.getNumero());
-			stmt.setString(7, ong.getComplemento());
-			stmt.setString(8, ong.getBairro());
-			stmt.setString(9, ong.getCidade());
-			stmt.setString(10, ong.getUf());
-			stmt.setString(11, ong.getEmail());
-			stmt.setString(12, ong.getSenha());
+			ps.setString(1, ong.getNome_ong());
+			ps.setString(2, ong.getTelefone());
+			ps.setLong(3, ong.getCnpj());
+			ps.setInt(4, ong.getCep());
+			ps.setString(5, ong.getLogradouro());
+			ps.setInt(6, ong.getNumero());
+			ps.setString(7, ong.getComplemento());
+			ps.setString(8, ong.getBairro());
+			ps.setString(9, ong.getCidade());
+			ps.setString(10, ong.getUf());
+			ps.setString(11, ong.getEmail());
+			ps.setString(12, ong.getSenha());
 
-			int rowsAffected = stmt.executeUpdate();
-			ResultSet rs = stmt.getGeneratedKeys();
+			int rowsAffected = ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			
 			if (rs.next()) {
 				Integer id = rs.getInt(1);
 				ong.setId_ong(id);
@@ -49,7 +51,9 @@ public class DaoOng {
 			if (rowsAffected > 0) {
 				sucesso = true;
 			}
-			stmt.close();
+			
+			ps.close();
+			conn.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -58,34 +62,35 @@ public class DaoOng {
 	}
 
 	public boolean alterarOng(Ong ong) {
+		
 		boolean sucesso = false;
 		String sql = "UPDATE tb_ong SET nome_ong = ?, telefone = ?, cnpj = ?, cep = ?, "
 				+ " logradouro = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, uf = ?, "
 				+ " email = ?, senha = ? WHERE id_ong = ? ";
 
 		try {
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 
-			stmt.setString(1, ong.getNome_ong());
-			stmt.setString(2, ong.getTelefone());
-			stmt.setLong(3, ong.getCnpj());
-			stmt.setInt(4, ong.getCep());
-			stmt.setString(5, ong.getLogradouro());
-			stmt.setInt(6, ong.getNumero());
-			stmt.setString(7, ong.getComplemento());
-			stmt.setString(8, ong.getBairro());
-			stmt.setString(9, ong.getCidade());
-			stmt.setString(10, ong.getUf());
-			stmt.setString(11, ong.getEmail());
-			stmt.setString(12, ong.getSenha());
-			stmt.setInt(13, ong.getId_ong());
+			ps.setString(1, ong.getNome_ong());
+			ps.setString(2, ong.getTelefone());
+			ps.setLong(3, ong.getCnpj());
+			ps.setInt(4, ong.getCep());
+			ps.setString(5, ong.getLogradouro());
+			ps.setInt(6, ong.getNumero());
+			ps.setString(7, ong.getComplemento());
+			ps.setString(8, ong.getBairro());
+			ps.setString(9, ong.getCidade());
+			ps.setString(10, ong.getUf());
+			ps.setString(11, ong.getEmail());
+			ps.setString(12, ong.getSenha());
+			ps.setInt(13, ong.getId_ong());
 
-			int rowsAffected = stmt.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
 			
 			if (rowsAffected > 0) {
 				sucesso = true;
 			}
-			stmt.close();
+			ps.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -100,11 +105,11 @@ public class DaoOng {
 		String sql = "SELECT * FROM tb_ong WHERE id_ong = ?";
 
 		try {
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 
-			stmt.setLong(1, ong.getId_ong());
+			ps.setLong(1, ong.getId_ong());
 
-			ResultSet rsOng = stmt.executeQuery();
+			ResultSet rsOng = ps.executeQuery();
 			if (rsOng.next()) {
 
 				ongEncontrada = new Ong(
@@ -122,7 +127,8 @@ public class DaoOng {
 						rsOng.getString(12), 
 						rsOng.getString(13));
 			}
-			stmt.close();
+			ps.close();
+			conn.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -134,15 +140,16 @@ public class DaoOng {
 		boolean sucesso = false;
 		String sql = "DELETE FROM tb_ong WHERE id_ong = ?";
 		try {
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 
-			stmt.setInt(1, ong.getId_ong());
+			ps.setInt(1, ong.getId_ong());
 
-			int rowsAffected = stmt.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
 			if(rowsAffected > 0) {
 				sucesso = true;
 			}
-			stmt.close();
+			ps.close();
+			conn.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -156,11 +163,11 @@ public class DaoOng {
 
 		String sql = "SELECT * FROM tb_ong WHERE nome_ong LIKE ?";
 		try {
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 
-			stmt.setString(1, "%" + ongEnt.getNome_ong() + "%");
+			ps.setString(1, "%" + ongEnt.getNome_ong() + "%");
 
-			ResultSet rsOng = stmt.executeQuery();
+			ResultSet rsOng = ps.executeQuery();
 			
 			Ong ong = new Ong();
 			while (rsOng.next()) {
@@ -183,7 +190,8 @@ public class DaoOng {
 				listarOngs.add(ong);
 			}
 			rsOng.close();
-			stmt.close();
+			ps.close();
+			conn.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -197,12 +205,12 @@ public class DaoOng {
 		String sql = " SELECT * FROM tb_ong WHERE email = ? AND senha = ? ";
 
 		try {
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 
-			stmt.setString(1, email);
-			stmt.setString(2, senha);
+			ps.setString(1, email);
+			ps.setString(2, senha);
 
-			ResultSet rs = stmt.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				usuarioOng = new Ong();
 				usuarioOng.setId_ong(rs.getInt("id_ong"));
@@ -220,7 +228,9 @@ public class DaoOng {
 				usuarioOng.setSenha(rs.getString("senha"));
 
 			}
-			stmt.close();
+			ps.close();
+			conn.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

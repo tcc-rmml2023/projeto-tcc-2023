@@ -1,4 +1,4 @@
-package br.com.animalcare.servlet;
+package br.com.animalcare.controller;
 
 import java.io.IOException;
 

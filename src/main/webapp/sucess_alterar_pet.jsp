@@ -1,23 +1,23 @@
 <%@page import="br.com.animalcare.bean.Pet"%>
 <%@page import="br.com.animalcare.bean.Ong"%>
 
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
 <!DOCTYPE html>
 <html lang="pt-br">
 <!-- link head -->
-<%@include file="cabecalho.jsp"%>
+<%@include file="../../../../../../cabecalho.jsp"%>
 <body>
 
 <!-- Topbar Start -->
-<%@include file="barraBotoesOng.jsp"%>
+<%@include file="../../../../barraBotoesOng.jsp"%>
 <!-- Topbar End -->   
 
 <!-- Ong logada -->
-<jsp:include page="ongLogada.jsp"></jsp:include>
+<jsp:include page="../../../../ongLogada.jsp"></jsp:include>
 
 	<div>${msg}</div>
    

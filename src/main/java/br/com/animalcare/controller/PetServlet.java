@@ -1,4 +1,4 @@
-package br.com.animalcare.servlet;
+package br.com.animalcare.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class PetServlet extends HttpServlet {
 					listarPetsPorOng(request, response);
 				}
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 	}
@@ -42,7 +42,7 @@ public class PetServlet extends HttpServlet {
 	protected void listarTodosPets(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		try {
-			DaoPet daoPet = new DaoPet();
+		    DaoPet daoPet = new DaoPet();
 			ArrayList<Pet> lista = new ArrayList<>();
 			
 			lista = daoPet.buscarPetOng();
@@ -69,7 +69,7 @@ public class PetServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			ong = (Ong) session.getAttribute("usuarioLogado");
 			
-			lista = daoPet.listarPets(ong);
+			lista = daoPet.listarPet(ong);
 			
 			request.setAttribute("lista", lista);
 			
@@ -77,7 +77,7 @@ public class PetServlet extends HttpServlet {
 			rd.forward(request, response);
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 }

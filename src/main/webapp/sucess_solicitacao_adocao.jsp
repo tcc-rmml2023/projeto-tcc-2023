@@ -6,11 +6,11 @@
 <html lang="pt-br">
 
 <!-- link head -->
-<%@include file="cabecalho.jsp"%>
+<%@include file="../../../../../../cabecalho.jsp"%>
 
 <body>
     <!-- Topbar Start -->
-    <%@include file="barraBotoes.jsp"%>
+    <%@include file="../../../../../barraBotoes.jspoes.jsp"%>
     <!-- Topbar End -->
 
     <!-- Contact Start -->

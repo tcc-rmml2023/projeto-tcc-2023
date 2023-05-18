@@ -1,4 +1,4 @@
-package br.com.animalcare.servlet;
+package br.com.animalcare.controller;
 
 import java.io.IOException;
 
@@ -14,48 +14,45 @@ import br.com.animalcare.bean.Ong;
 import br.com.animalcare.bean.Pet;
 import br.com.animalcare.dao.DaoPet;
 
-@WebServlet("/InserirPetServlet")
-public class InserirPetServlet extends HttpServlet {
+@WebServlet("/ExcluirPetServlet")
+public class ExcluirPetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    public InserirPetServlet() {
+       
+    public ExcluirPetServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("inserir_pet.jsp");
-		rd.forward(request, response);
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		try {
 			DaoPet daoPet = new DaoPet();
-			Ong ong = new Ong();
-			boolean inserido = false;
 			
 			HttpSession session = request.getSession();
-			ong = (Ong) session.getAttribute("usuarioLogado");
+			Ong ong = (Ong) session.getAttribute("usuarioLogado"); 
+			
+			String id = request.getParameter("id_pet"); 
+			int id_pet = Integer.parseInt(id);
 			
 			Pet pet = new Pet();
-			pet.setNome_pet(request.getParameter("nome_pet"));
-			pet.setIdade(request.getParameter("idade"));
-			pet.setGenero(request.getParameter("genero"));
-			pet.setObs(request.getParameter("obs"));
+			pet.setId_pet(id_pet);
 			pet.setId_ong(ong.getId_ong());
 			
-			inserido = daoPet.inserirPet(pet, ong);
-			
-			if(inserido) {
-				request.setAttribute("msg", "Pet incluído com sucesso!!");
+			boolean excluido = daoPet.excluirPet(pet, ong);
+			if(excluido) {
+				request.setAttribute("msg", "Pet excluído com sucesso!!");	
 			}
 			else {
-				request.setAttribute("msg", "Erro ao incluir pet!! Tente novamente!");
+				request.setAttribute("msg", "Erro ao tentar excluír pet!! Tente novamente");			
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("inserir_pet.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("PetServlet?action=listarPetsPorOng");
 			rd.forward(request, response);
-		}	
+		} 
 		catch (Exception e) {
 			e.printStackTrace();
-		}
+		}	
 	}
 }

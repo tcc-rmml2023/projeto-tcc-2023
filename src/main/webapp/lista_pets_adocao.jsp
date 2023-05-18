@@ -1,7 +1,7 @@
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
     
 <!DOCTYPE html>
@@ -34,12 +34,23 @@
                             <tr><td> Genero</td><td><c:out value="${obj.genero}"/></td></tr>
                             <tr><td> Observação</td><td><c:out value="${obj.obs}"/></td></tr>
                             <tr><td> Ong</td><td><c:out value="${obj.ong_nome}"/></td></tr>
-                            <tr><td> Cidade</td><td><c:out value="${obj.ong_cidade}"/></td></tr>
+                            <tr><td> Cidade</td><td><c:out value="${obj.ong_cidade}"/></td></tr> 
+                            
                         </table>
                         <a href="AdocaoServlet?id_pet=${obj.id_pet}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">ADOTE</a>	
                         </p>
+                       
+                       <table border="1" style="width: 600px">
+                       		<tr>
+                       			<td>
+                       				<c:if test="${obj.caminhoImagem != null}">
+                       					<img alt="" src="${pageContext.request.contextPath + obj.caminhoImagem}" style="width: 300px; height: 250px">
+                       				</c:if>
+                       			</td>
+                       		</tr>
+                       </table>
+                       
                   		</c:forEach>
-                        
                     </div>
                 </div>
             </div>
@@ -65,51 +76,6 @@
                 </nav>
             </div>
     <!-- Blog End -->
-
-<!--div class="col-lg-4 mb-4">
-                <div class="card border-0 mb-2">
-                    <img class="card-img-top" src="img/blog-2.jpg" alt="">
-                    <div class="card-body bg-light p-4">
-                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
-                        <div class="d-flex mb-3">
-                            <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                            <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                            <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
-                        </div>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum sit vero stet justo</p>
-                        <a class="font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card border-0 mb-2">
-                    <img class="card-img-top" src="img/blog-3.jpg" alt="">
-                    <div class="card-body bg-light p-4">
-                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
-                        <div class="d-flex mb-3">
-                            <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                            <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                            <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
-                        </div>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum sit vero stet justo</p>
-                        <a class="font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card border-0 mb-2">
-                    <img class="card-img-top" src="img/blog-1.jpg" alt="">
-                    <div class="card-body bg-light p-4">
-                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
-                        <div class="d-flex mb-3">
-                            <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                            <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                            <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
-                        </div>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum sit vero stet justo</p>
-                        <a class="font-weight-bold" href="">Read More</a>
-                    </div>
-                </div-->
 
  <!-- Footer Start -->
  <%@include file="rodape.jsp"%>

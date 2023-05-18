@@ -1,4 +1,4 @@
-package br.com.animalcare.servlet;
+package br.com.animalcare.controller;
 
 
 import java.io.IOException;
@@ -51,22 +51,21 @@ public class AdocaoServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
-			//DaoPet petDao = new DaoPet();
-			//Ong ong = new Ong();
-			//Pet pet = new Pet();
 			
 			Email mail = new Email();
 			
-			mail.setEmailOng(request.getParameter("emailOng"));
-			mail.setEmailAdotante(request.getParameter("email"));
+			mail.setEmailCC(request.getParameter("emailOng"));
+			mail.setEmailTo(request.getParameter("email"));
+			mail.setAssunto("Solicitação de adoção");
 			
 			
 			StringBuffer mensagem = new StringBuffer();
 			
 			mensagem.append("<h2 align='center'>AnimalCare - Solicitação de adoção</h2>");
 			mensagem.append("<br/>");
+			
+			mensagem.append("<img src=\"cid:image\">");
 			
 			mensagem.append("<h5>Informações do pet</h5>");
 			mensagem.append("ID pet: ");
@@ -102,7 +101,7 @@ public class AdocaoServlet extends HttpServlet {
 			mensagem.append(request.getParameter("telefone"));
 			mensagem.append("<br/>");
 			
-			mail.setSolicitacao(mensagem.toString());
+			mail.setMessage(mensagem.toString());
 			
 			boolean enviou = mail.enviarGmail();
 			
@@ -115,8 +114,12 @@ public class AdocaoServlet extends HttpServlet {
 	           
 	        } 
 			else {
-	            request.setAttribute("msg", "Não foi possível realizar a solicitação.");
-	            response.sendRedirect("solicitacao_adocao.jsp");
+				
+				RequestDispatcher rd = request.getRequestDispatcher("solicitacao_adocao.jsp");
+				request.setAttribute("msg", "Não foi possível realizar sua solicitação."
+						+ " Tente de novo.");
+				rd.forward(request, response);
+	            
 	        }
 		} 
 		catch (Exception e) {

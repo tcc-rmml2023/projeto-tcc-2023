@@ -12,4 +12,22 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
+	
+	<context-param>
+		<param-name>primefaces.UPLOADER</param-name>
+		<param-value>native</param-value>
+	</context-param>
+	
+	<context-param>
+		<description>Pasta das imagens</description>
+		<param-name>pastaImagens</param-name>
+		<param-value>imagens</param-value>
+	</context-param>
+	
+	<context-param>
+		<description>Local para upçoad de arquivos</description>
+		<param-name>file-upload</param-name>
+		<param-value>C:\Program Files (x86)\Apache Software Foundation\Tomcat 9.0\webapps\data</param-value>
+	</context-param>
+	
 </web-app>

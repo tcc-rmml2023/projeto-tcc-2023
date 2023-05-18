@@ -6,13 +6,15 @@ import java.sql.SQLException;
 
 public class Conexao {
 	
+	private static final String URL = "jdbc:mysql://localhost:3306/db_animalcare";
+	private static final String USER = "root";
+	private static final String PASSWWORD = "@rc1723Ma";
+	
 	public Connection getConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/db_animalcare";
-			String usuario = "root";
-			String senha = "@rc1723Ma";
-			return DriverManager.getConnection(url, usuario, senha);
+			 
+			return DriverManager.getConnection(URL, USER, PASSWWORD);
 		} 
 		catch (SQLException e) {
 			throw new RuntimeException(e);

@@ -23,8 +23,7 @@ public class Ong implements Serializable{
 	private String senha;
 	
 	private ArrayList<Pet> pets;
-	private ArrayList<Adotante> adotantes;
-	private ArrayList<UsuarioOng> usuarios;
+	private Pet pet;
 	
 	public Ong(String nome_ong, String telefone, Long cnpj, Integer cep, String logradouro, Integer numero, String complemento, String bairro, String cidade, String uf, String email, String senha) {
 
@@ -149,11 +148,11 @@ public class Ong implements Serializable{
 		return pets;
 	}
 
-	public ArrayList<Adotante> getAdotantes() {
-		return adotantes;
+	public Pet getPet() {
+		return pet;
 	}
-	public ArrayList<UsuarioOng> getUsuarios() {
-		return usuarios;
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
 	@Override
 	public int hashCode() {

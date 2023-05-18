@@ -15,33 +15,16 @@ public class Pet implements Serializable{
 	private String ong_cidade;
 	private String obs;
 	private Integer id_ong;
-	private Integer id_adotante;
 	private String emailOng;
+	private String caminhoImagem;
 	
-	private Adotante adotante;
+	//private Adotante adotante;
 	private Ong ong;
 	
 	public Pet() {
 		super();
 	}
-	public Pet(Integer id_pet, String nome_pet, String idade, String genero, String obs) {
-		super();
-		this.id_pet = id_pet;
-		this.nome_pet = nome_pet;
-		this.idade = idade;
-		this.genero = genero;
-		this.obs = obs;
-	}
-	
-	public Pet(Integer id_pet, String nome_pet, String idade, String genero, String obs,Integer id_ong) {
-		super();
-		this.id_pet = id_pet;
-		this.nome_pet = nome_pet;
-		this.idade = idade;
-		this.genero = genero;
-		this.obs = obs;
-		this.id_ong = id_ong;
-	}
+
 	public Integer getId_pet() {
 		return id_pet;
 	}
@@ -73,19 +56,8 @@ public class Pet implements Serializable{
 	public void setId_ong(Integer id_ong) {
 		this.id_ong = id_ong;
 	}
-	public Integer getId_adotante() {
-		return id_adotante;
-	}
-	public void setId_adotante(Integer id_adotante) {
-		this.id_adotante = id_adotante;
-	}
+
 	
-	public Adotante getAdotante() {
-		return adotante;
-	}
-	public void setAdotante(Adotante adotante) {
-		this.adotante = adotante;
-	}
 	public Ong getOng() {
 		return ong;
 	}
@@ -119,10 +91,20 @@ public class Pet implements Serializable{
 	public void setEmailOng(String emailOng) {
 		this.emailOng = emailOng;
 	}
+	
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(nome_pet);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -1,6 +1,6 @@
 <%@page import="br.com.animalcare.bean.Ong"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -75,7 +75,7 @@
 	</form>
 	
     <!-- Footer Start -->
-    <jsp:include page="rodape.jsp"></jsp:include>
+    <jsp:include page="../../../../../../rodape.jsp"></jsp:include>
     <!-- Footer End -->
 </body>
 </html>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,19 +19,17 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 mb-5">
+           	  <div>${msg}</div><br>
                 <div class="contact-form">
                     <div id="success"></div>
-                    <jsp:useBean id="pet" class="br.com.animalcare.bean.Pet" scope="request"></jsp:useBean>
-                    <form name="cadastroAdotante" method="post" action="AdocaoServlet" >
+                    <form name="cadastroAdotante" method="post" action="FeedbackServlet" >
 
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" name="nome_adotante" value="" 
+                            <input type="text" class="form-control p-4" name="nome" value="" 
                             placeholder="Seu nome" required="required" 
                             data-validation-required-message="Please enter your name" />
                             <p class="help-block text-danger"></p>
                         </div>
-                        
-                      
                         
                         <div class="control-group">
                             <input type="email" class="form-control p-4" name="email" value="" 
@@ -39,8 +37,6 @@
                             data-validation-required-message="Please enter your email" />
                             <p class="help-block text-danger"></p>
                         </div>
-                        
-                    
                         
                         <div class="control-group">
                         
