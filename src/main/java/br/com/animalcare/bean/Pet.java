@@ -16,9 +16,9 @@ public class Pet implements Serializable{
 	private String obs;
 	private Integer id_ong;
 	private String emailOng;
-	private String caminhoImagem;
 	
-	//private Adotante adotante;
+	private Imagem imagem;
+	
 	private Ong ong;
 	
 	public Pet() {
@@ -57,7 +57,6 @@ public class Pet implements Serializable{
 		this.id_ong = id_ong;
 	}
 
-	
 	public Ong getOng() {
 		return ong;
 	}
@@ -92,12 +91,12 @@ public class Pet implements Serializable{
 		this.emailOng = emailOng;
 	}
 	
-	public String getCaminhoImagem() {
-		return caminhoImagem;
+	public Imagem getImagem() {
+		return imagem;
 	}
 
-	public void setCaminhoImagem(String caminhoImagem) {
-		this.caminhoImagem = caminhoImagem;
+	public void setImagem(Imagem imagem) {
+		this.imagem = imagem;
 	}
 
 	@Override
@@ -115,5 +114,10 @@ public class Pet implements Serializable{
 			return false;
 		Pet other = (Pet) obj;
 		return Objects.equals(nome_pet, other.nome_pet);
+	}
+
+	@Override
+	public String toString() {
+		return "Pet [id_pet=" + id_pet + ", imagem=" + imagem + "]";
 	}
 }

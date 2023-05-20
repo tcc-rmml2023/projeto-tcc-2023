@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import br.com.animalcare.bean.Imagem;
 import br.com.animalcare.bean.Ong;
 import br.com.animalcare.bean.Pet;
 import br.com.animalcare.util.Conexao;
@@ -21,44 +22,47 @@ public class DaoPet {
 	
 	Ong ong = new Ong();
 	
-	public boolean inserirPet(Pet pet) {
-		boolean sucesso = false;
+	public Integer inserirPet(Pet pet) {
 		
-		String sql = "INSERT INTO tb_pet (nome_pet, idade, genero, obs, tb_pet.caminho_imagem, id_ong) "
-				+ "VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO tb_pet (nome_pet, idade, genero, obs, id_ong) "
+				+ "VALUES (?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, pet.getNome_pet());
 			ps.setString(2, pet.getIdade());
 			ps.setString(3, pet.getGenero());
 			ps.setString(4, pet.getObs());
-			ps.setString(5, pet.getCaminhoImagem());
-			
-			ps.setInt(6, pet.getId_ong());
+			ps.setInt(5, pet.getId_ong());
 		
-			int rowsAffected = ps.executeUpdate();
+			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			
 			if (rs.next()) {
 				Integer id = rs.getInt(1);
 				pet.setId_pet(id);
 			}
-			if (rowsAffected > 0) {
-				sucesso = true;
-			}
+			
 			ps.close();
-			conn.close();
 		} 
 		catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		return sucesso;
+		finally {
+			try 
+			{
+				conn.close();
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return pet.getId_pet();
 	}
 	
 	public boolean alterarPet(Pet pet) {
 		boolean sucesso = false;
 		
-		String sql = "UPDATE tb_pet SET nome_pet =?, idade =?, genero =?, obs=?, caminho_imagem=? "
+		String sql = "UPDATE tb_pet SET nome_pet =?, idade =?, genero =?, obs=? "
 						+ " WHERE id_pet =? AND id_ong =? ";
 		
 		try {
@@ -67,7 +71,6 @@ public class DaoPet {
 			ps.setString(2, pet.getIdade());
 			ps.setString(3, pet.getGenero());
 			ps.setString(4, pet.getObs());
-			ps.setString(4, pet.getCaminhoImagem());
 			ps.setInt(5, pet.getId_pet());
 			ps.setInt(6, pet.getId_ong());
 			
@@ -85,11 +88,10 @@ public class DaoPet {
 		return sucesso;
 	} 
 	
-	public ArrayList<Pet> listarPet(Ong ong) {
+	public ArrayList<Pet> listarPet(Ong ong) throws ClassNotFoundException {
 		ArrayList<Pet> listapet = new ArrayList<>();
 		
 		String sql = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, "
-				+ " tb_pet.caminho_imagem, "
 				+ " tb_ong.nome_ong, " 
 				+ " tb_ong.id_ong FROM tb_pet " 
 				+ " INNER JOIN tb_ong " 
@@ -110,19 +112,28 @@ public class DaoPet {
 			pet.setIdade(rs.getString("idade"));
 			pet.setGenero(rs.getString("genero"));
 			pet.setObs(rs.getString("obs"));
-			pet.setCaminhoImagem(rs.getString("caminho_imagem"));
 			pet.setOng_nome(rs.getString("nome_ong"));
 			pet.setId_ong(rs.getInt("id_ong"));
-				
+			
+			DaoImagem daoImagem = new DaoImagem();
+			Imagem imagem = daoImagem.listaImagens(pet.getId_pet());
+			
+			if(imagem != null) {
+				pet.setImagem(imagem);
+			}
+			
 			listapet.add(pet);
 			}
 			
 			ps.close();
 			conn.close();
 			
+			System.out.println(listapet);
+			
 		} 
 		catch (SQLException e) {
 			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return listapet;
 	}
@@ -154,7 +165,6 @@ public class DaoPet {
 	public ArrayList<Pet> buscarPetOng() {
 		ArrayList<Pet> listapetOng = new ArrayList<>();
 		String sql = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, "
-				+ "tb_pet.caminho_imagem, "
 				+ "tb_ong.nome_ong, tb_ong.cidade "
 				+ "FROM tb_pet, tb_ong WHERE tb_pet.id_ong = tb_ong.id_ong ";
 		
@@ -170,7 +180,6 @@ public class DaoPet {
 				pet.setIdade(rs.getString("idade"));
 				pet.setGenero(rs.getString("genero"));
 				pet.setObs(rs.getString("obs"));
-				pet.setCaminhoImagem(rs.getString("caminho_imagem"));
 				pet.setOng_nome(rs.getString("nome_ong"));
 				pet.setOng_cidade(rs.getString("cidade"));
 

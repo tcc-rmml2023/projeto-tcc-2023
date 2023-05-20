@@ -2,20 +2,25 @@ package br.com.animalcare.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.codec.binary.Base64;
+
 import br.com.animalcare.bean.Ong;
 import br.com.animalcare.bean.Pet;
 import br.com.animalcare.dao.DaoPet;
 
 @WebServlet(urlPatterns = {"/PetServlet"})
+@MultipartConfig
 public class PetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,19 +29,28 @@ public class PetServlet extends HttpServlet {
     }
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String acao = request.getParameter("action");
+		/*String acao = request.getParameter("action");
+		if(acao.equals("listarTodosPets")) {
+			listarTodosPets(request, response);
+		}
 		
-				if(acao.equals("listarTodosPets")) {
-					listarTodosPets(request, response);
-				}
-				
-				if(acao.equals("listarPetsPorOng")) {
-					listarPetsPorOng(request, response);
-				}
+		if(acao.equals("listarPetsPorOng")) {
+			listarPetsPorOng(request, response);
+		}*/
+		
+		doPost(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		String acao = request.getParameter("action");
+		if(acao.equals("listarTodosPets")) {
+			listarTodosPets(request, response);
+		}
+		
+		if(acao.equals("listarPetsPorOng")) {
+			listarPetsPorOng(request, response);
+		}
 	}
 	
 	protected void listarTodosPets(HttpServletRequest request, HttpServletResponse response) 
@@ -54,7 +68,8 @@ public class PetServlet extends HttpServlet {
 
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
 		}
 	}
 	
@@ -71,6 +86,11 @@ public class PetServlet extends HttpServlet {
 			
 			lista = daoPet.listarPet(ong);
 			
+			//List<Pet> pet =  lista.stream().filter(x-> x.getId_pet().equals(69)).toList();
+			//System.out.println(pet.get(0).getImagem().getImagemBase64().get(0));
+			
+			//request.setAttribute("fotoPet", pet.get(0).getImagem().getImagemBase64().get(0));
+			
 			request.setAttribute("lista", lista);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("lista_pets_ong.jsp");
@@ -78,6 +98,7 @@ public class PetServlet extends HttpServlet {
 		} 
 		catch (Exception e) {
 			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 }

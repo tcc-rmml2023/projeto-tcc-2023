@@ -1,11 +1,9 @@
 package br.com.animalcare.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,11 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
-import org.apache.catalina.core.ApplicationPart;
+import org.apache.commons.io.IOUtils;
+import org.apache.tomcat.util.codec.binary.Base64;
 
+import br.com.animalcare.bean.Imagem;
 import br.com.animalcare.bean.Ong;
 import br.com.animalcare.bean.Pet;
+import br.com.animalcare.dao.DaoImagem;
 import br.com.animalcare.dao.DaoPet;
 
 
@@ -34,8 +36,7 @@ public class InserirPetServlet extends HttpServlet {
   
     private DaoPet daoPet;
     private Ong ong;
-    private ApplicationPart imagem;
-    
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
@@ -60,9 +61,9 @@ public class InserirPetServlet extends HttpServlet {
 		
 		try {
 			
+			Imagem imagem = new Imagem();
 			Pet pet = new Pet();
-			
-			boolean inserido = false;
+			DaoImagem daoImagem = new DaoImagem();
 			
 			HttpSession session = request.getSession();
 			ong = (Ong) session.getAttribute("usuarioLogado");
@@ -73,32 +74,37 @@ public class InserirPetServlet extends HttpServlet {
 			pet.setObs(request.getParameter("obs"));
 			pet.setId_ong(ong.getId_ong());
 			
-			 String caminhoImagem = "";
+			List<String> imagensBase64 = new ArrayList<>();
+			List<String> extencoes = new ArrayList<>();
 			
-			if(imagem != null && imagem.getSubmittedFileName() != null) {
+			if(request.getParts() != null) {
 				
-				caminhoImagem = "C:\\temp\\imagens\\" + imagem.getSubmittedFileName();
+				List<Part> parts = request.getParts().stream().toList();
 				
-				try {
+				for(Part p : parts) {
 					
-					byte[] byteImagem = new byte[(int) imagem.getSize()];
-					imagem.getInputStream().read(byteImagem);
-					File file = new File(caminhoImagem);
-					OutputStream outStream = new BufferedOutputStream(new FileOutputStream(file));
-					outStream.write(byteImagem);
-					outStream.flush();
-					outStream.close();
-				} 
-				
-				catch (Exception e) {
-					System.out.println(e.getMessage());
+					if(p.getContentType() != null && p.getContentType().startsWith("image") ) {
+						
+						byte[] foto = IOUtils.toByteArray(p.getInputStream());
+						@SuppressWarnings("static-access")
+						String imagemBase64 = "data:image/" + p.getContentType()
+						.split("\\/")[1] + ";base64," 
+						+ new Base64().encodeBase64String(foto);
+						
+						imagensBase64.add(imagemBase64);
+						extencoes.add(p.getContentType().split("\\/")[1] );
+					}
 				}
 			}
-		    
-		    pet.setCaminhoImagem(caminhoImagem);
-			inserido = daoPet.inserirPet(pet);
 			
-			if(inserido) {
+			imagem.setImagemBase64(imagensBase64);
+			imagem.setExtencao(extencoes);
+			
+			int teste = daoPet.inserirPet(pet);
+			
+			daoImagem.inserir(teste, imagem);
+			
+			if(teste != 0) {
 				request.setAttribute("msg", "Pet incluído com sucesso!!");
 			}
 			else {
@@ -109,6 +115,7 @@ public class InserirPetServlet extends HttpServlet {
 		}	
 		catch (Exception e) {
 			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 }

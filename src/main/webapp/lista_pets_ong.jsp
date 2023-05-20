@@ -42,12 +42,15 @@
                   	    <a href="ExcluirPetServlet?id_pet=${obj.id_pet}" class="btn btn-primary-crud py-2 px-4">Excluir</a>
                        </p>
                        
-                       <table border="1">
+                       <table border="1" >
                        <tr>
                        <td>
-                       		<c:if test="${obj.caminhoImagem != null}">
-                       			<img alt="" src="<c:url value="${obj.caminhoImagem}"/> "style="width: 40%;"/>
-                       		</c:if>
+                       <c:if test="${obj.imagem.imagemBase64!=null}">
+                      		 <c:forEach items="${obj.imagem.imagemBase64}" var="img">
+                       				<img alt="Imagem Pet" width="300" height="200" src="${img}">
+                       			</c:forEach>
+                       </c:if>
+                       		
                        </td>
                        </tr>
                        </table>

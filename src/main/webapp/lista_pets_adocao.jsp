@@ -40,16 +40,6 @@
                         <a href="AdocaoServlet?id_pet=${obj.id_pet}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">ADOTE</a>	
                         </p>
                        
-                       <table border="1" style="width: 600px">
-                       		<tr>
-                       			<td>
-                       				<c:if test="${obj.caminhoImagem != null}">
-                       					<img alt="" src="${pageContext.request.contextPath + obj.caminhoImagem}" style="width: 300px; height: 250px">
-                       				</c:if>
-                       			</td>
-                       		</tr>
-                       </table>
-                       
                   		</c:forEach>
                     </div>
                 </div>
