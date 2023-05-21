@@ -5,17 +5,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->
-<jsp:include page="cabecalho.jsp"></jsp:include>
+<!-- Head Start -->
+<jsp:include page="cabecalho.jsp" />
+<!-- Head End -->
+
 <body>
 	<!-- Topbar Start -->
-<jsp:include page="barraBotoesOng.jsp"></jsp:include>
-<!-- Topbar End -->   
+	<jsp:include page="barraBotoesOng.jsp" />
+	<!-- Topbar End -->   
 
-<!-- Ong logada -->
-<jsp:include page="ongLogada.jsp"></jsp:include>
+	<!-- Ong logada -->
+	<jsp:include page="ongLogada.jsp" />
 
-  	<a> ${msg}</a><br><br>
+	<!-- Mensagem ao alterar informações Ong -->
+  	<div><h6>${msg}</h6></div><br><br>
 
 	<h5>Informações do cadastro</h5>
 	<form name="atualizar_ong" method="POST" action="sucess_alterar_ong.jsp">

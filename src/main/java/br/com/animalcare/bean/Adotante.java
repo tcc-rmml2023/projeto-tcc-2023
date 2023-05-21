@@ -12,15 +12,6 @@ public class Adotante implements Serializable{
 	private String telefone;
 	
 	public Adotante() {
-		
-	}
-
-	public Adotante(String nome_adotante, Long cpf, String email, String telefone) {
-		super();
-		this.nome_adotante = nome_adotante;
-		this.cpf = cpf;
-		this.email = email;
-		this.telefone = telefone;
 	}
 
 	public String getNome_adotante() {

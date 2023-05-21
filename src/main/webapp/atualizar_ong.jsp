@@ -5,15 +5,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->
+<!-- Head Start -->
 <jsp:include page="cabecalho.jsp"></jsp:include>
+<!-- Head End -->
+
 <body>
 	<!-- Topbar Start -->
-<jsp:include page="barraBotoesOng.jsp"></jsp:include>
-<!-- Topbar End -->   
+	<jsp:include page="barraBotoesOng.jsp" />
+	<!-- Topbar End -->   
 
-<!-- Ong logada -->
-<jsp:include page="ongLogada.jsp"></jsp:include>
+	<!-- Ong logada -->
+	<jsp:include page="ongLogada.jsp" />
 
 	<h5>Informações do cadastro</h5>
 	<form name="atualizar_ong" method="POST" action="AtualizarOngServlet">

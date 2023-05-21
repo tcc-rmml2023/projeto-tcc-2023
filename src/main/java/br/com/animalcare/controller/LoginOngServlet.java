@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import br.com.animalcare.bean.Ong;
 import br.com.animalcare.dao.DaoOng;
 
-@WebServlet(name = "LoginOngServlet", urlPatterns = { "/LoginOngServlet" })
+@WebServlet(name = "LoginOngServlet", urlPatterns = { "/LoginOngServlet"})
 public class LoginOngServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -21,6 +21,8 @@ public class LoginOngServlet extends HttpServlet {
 	public LoginOngServlet() {
 		super();
 	}
+	
+	private Ong loginOng;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,7 +39,7 @@ public class LoginOngServlet extends HttpServlet {
 
 		try {
 			DaoOng ongDao = new DaoOng();
-			Ong loginOng = new Ong();
+			
 			loginOng = ongDao.buscarOngPorEmail(email, senha);
 
 			boolean loginSucesso = false;
@@ -60,7 +62,8 @@ public class LoginOngServlet extends HttpServlet {
 			}
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 }

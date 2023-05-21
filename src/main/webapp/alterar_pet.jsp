@@ -8,8 +8,12 @@
     
 <!DOCTYPE html>
 <html lang="pt-br">
-<!-- link head -->
+
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
+
+
 <body>
 
 <!-- Topbar Start -->
@@ -17,14 +21,14 @@
 <!-- Topbar End -->   
 
 <!-- Ong logada -->
-<jsp:include page="ongLogada.jsp"></jsp:include>
+	 <jsp:include page="ongLogada.jsp" />
    
 <form name="frmAlteraPet" method="POST" action="AlterarPetServlet">
-
+	
 	 <input type="text" class="form-control-cep p-4" name="id_pet" id="id_pet" readonly="readonly"
 	 value="<%out.println(request.getAttribute("id_pet"));%>"><br><br>
 	
-	 <input type="text" class="form-control-cep p-4" name="nome_pet" id="nome_pet" 
+	 Nome<input type="text" class="form-control-cep p-4" name="nome_pet" id="nome_pet" 
 	 value="<%out.println(request.getAttribute("nome_pet"));%>" 
      placeholder="Nome" autofocus required="required" 
      data-validation-required-message="Please enter your message"><br><br>

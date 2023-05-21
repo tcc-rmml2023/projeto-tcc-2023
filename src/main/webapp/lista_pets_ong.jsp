@@ -1,7 +1,5 @@
 <%@page import="br.com.animalcare.bean.Ong"%>
 
-<%String msg = (String) request.getAttribute("msg");%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,25 +7,31 @@
         
 <!DOCTYPE html>
 <html lang="pt-br">
+
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
 
 <body>
     <!-- Topbar Start -->
     <%@include file="barraBotoesOng.jsp"%>
     <!-- Topbar End -->
     
-    <!-- Ong logada -->
-    <jsp:include page="ongLogada.jsp"></jsp:include>
-   					 
+    <!-- Ong logada Start -->
+    <jsp:include page="ongLogada.jsp" />
+    <!-- Ong logada End -->
+   
         <div class="d-flex flex-column text-center mb-5 pt-5">
         
             <h6 class="display-4 m-0"><span class="text-primary">Lista de pets</span></h6></div>
         <div class="row pb-3">
             <div class="col-lg-4 mb-4">
-            <p>"${msg}"</p>
+            
+            	<!-- Mensagem ao atualizar pet -->
+            	<div><h5>${msg}</h5></div>
+            	
                   <c:forEach items="${lista}" var="obj">
                   <div class="card border-0 mb-2">
-                  		<p>
                   		
                   		<table class="tabela" border="1">
                   			<tr><td> ID Pet</td><td><c:out value="${obj.id_pet}"/></td></tr>
@@ -40,17 +44,15 @@
                         </table>
                         <a href="AlterarPetServlet?id_pet=${obj.id_pet}" class="btn btn-primary-crud py-2 px-4">Alterar</a>
                   	    <a href="ExcluirPetServlet?id_pet=${obj.id_pet}" class="btn btn-primary-crud py-2 px-4">Excluir</a>
-                       </p>
-                       
-                       <table border="1" >
+                      
+                       <table border="1">
                        <tr>
                        <td>
                        <c:if test="${obj.imagem.imagemBase64!=null}">
                       		 <c:forEach items="${obj.imagem.imagemBase64}" var="img">
                        				<img alt="Imagem Pet" width="300" height="200" src="${img}">
                        			</c:forEach>
-                       </c:if>
-                       		
+                        </c:if>
                        </td>
                        </tr>
                        </table>
@@ -59,8 +61,6 @@
                   		</c:forEach>
                     </div>
                 </div>
-           	
-          
             <div class="col-lg-12">
                 <nav aria-label="Page navigation">
                   <ul class="pagination justify-content-center mb-4">

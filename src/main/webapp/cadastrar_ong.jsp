@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%String erro = (String) request.getAttribute("erro");%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->    
+<!-- Head Start -->    
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
+
 <body>
     <!-- Topbar Start -->
      <%@include file="barraBotoes.jsp"%>
@@ -120,9 +122,12 @@
 		
                                <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
                                     name="enviar" value="Cadastrar">
-                               <p><% if (erro != null) out.print(erro); %></p>
-                                <br><br><br>
+                                
                               </form>
+                              <br>
+                              <c:if test="${msg!=null}">
+                              		<div><h6>${msg}</h6></div>
+                              </c:if>
                         </div>
                 </div>
             </div>

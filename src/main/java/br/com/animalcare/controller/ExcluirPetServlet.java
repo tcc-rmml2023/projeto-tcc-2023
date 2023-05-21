@@ -14,7 +14,7 @@ import br.com.animalcare.bean.Ong;
 import br.com.animalcare.bean.Pet;
 import br.com.animalcare.dao.DaoPet;
 
-@WebServlet("/ExcluirPetServlet")
+@WebServlet(name="ExcluirPetServlet", urlPatterns = "/ExcluirPetServlet")
 public class ExcluirPetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -52,7 +52,8 @@ public class ExcluirPetServlet extends HttpServlet {
 			rd.forward(request, response);
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
-		}	
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		}
 	}
 }

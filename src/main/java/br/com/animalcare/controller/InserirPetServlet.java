@@ -1,7 +1,6 @@
 package br.com.animalcare.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ import br.com.animalcare.dao.DaoImagem;
 import br.com.animalcare.dao.DaoPet;
 
 
-@WebServlet("/InserirPetServlet")
+@WebServlet(name="InserirPetServlet",  urlPatterns = "/InserirPetServlet")
 @MultipartConfig(maxFileSize = 1024 * 1024 * 16)
 public class InserirPetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,9 +33,6 @@ public class InserirPetServlet extends HttpServlet {
         super();
     }
   
-    private DaoPet daoPet;
-    private Ong ong;
-  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
@@ -44,24 +40,13 @@ public class InserirPetServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
-	@Override
-	public void init() throws ServletException {
-		try {
-			daoPet = new DaoPet();
-		} 
-		catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		
-		super.init();
-	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
 		try {
-			
-			Imagem imagem = new Imagem();
+			DaoPet daoPet = new DaoPet();
+		    Ong ong = new Ong();
+		    Imagem imagem = new Imagem();
 			Pet pet = new Pet();
 			DaoImagem daoImagem = new DaoImagem();
 			
@@ -100,11 +85,11 @@ public class InserirPetServlet extends HttpServlet {
 			imagem.setImagemBase64(imagensBase64);
 			imagem.setExtencao(extencoes);
 			
-			int teste = daoPet.inserirPet(pet);
+			int id_pet = daoPet.inserirPet(pet);
 			
-			daoImagem.inserir(teste, imagem);
+			daoImagem.inserir(id_pet, imagem);
 			
-			if(teste != 0) {
+			if(id_pet > 0) {
 				request.setAttribute("msg", "Pet incluído com sucesso!!");
 			}
 			else {

@@ -1,24 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
 
 <body>
 
 	<!-- Topbar Start -->
     <%@include file="barraBotoes.jsp"%>
     <!-- Topbar End -->
+    
       <div class="container-fluid pt-5">
         <div class="d-flex flex-column text-center mb-5 pt-5">
-            
           <p class="display-4 m-1"><h3>Ajude-nos a melhorar os nossos serviços, deixando o seu <i>feedback</i> abaixo</h3><span class="text-primary"></span></p>
-
         </div>
+        
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 mb-5">
+              <!-- Mensagem de ao enviar feedback -->	
            	  <div>${msg}</div><br>
                 <div class="contact-form">
                     <div id="success"></div>
@@ -39,18 +42,15 @@
                         </div>
                         
                         <div class="control-group">
-                        
-                        <textarea class="form-control p-4" id="feedback" name ="feedback"
-                    		rows ="6" cols="35"
-                        placeholder="Seu e-mail">
-                        </textarea>
-                           
+                       		 <textarea class="form-control p-4" id="feedback" name ="feedback"
+                    			 rows ="6" cols="35"
+                       			 placeholder="Seu mensagem: ">
+                       		 </textarea>
                         </div>
                         
                        <br><br>
                         <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
                         name="enviar" value="Enviar">
-                    
                     </form>
                 </div>
             </div>

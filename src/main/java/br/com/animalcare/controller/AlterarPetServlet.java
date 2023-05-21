@@ -44,10 +44,10 @@ public class AlterarPetServlet extends HttpServlet {
 			request.setAttribute("obs", pet.getObs());
 			
 			rd.forward(request, response);
-			
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -73,8 +73,9 @@ public class AlterarPetServlet extends HttpServlet {
 			pet.setId_ong(ong.getId_ong());
 			
 			boolean alterado = daoPet.alterarPet(pet);
+			
 			if(alterado) {
-				RequestDispatcher rd = request.getRequestDispatcher("sucess_alterar_pet.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("PetServlet?action=listarPetsPorOng");
 				request.setAttribute("msg", "Pet alterado com sucesso!!");
 				rd.forward(request, response);
 			}
@@ -84,7 +85,8 @@ public class AlterarPetServlet extends HttpServlet {
 			}
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 }

@@ -7,8 +7,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
 
 <body>
     <!-- Topbar Start -->
@@ -27,7 +28,10 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">
-                <div>${msg}</div><br><b></b>
+                
+                <!-- Mensagem ao solicitar adoção -->
+                <div><h6>${msg}</h6></div><br><b></b>
+                
                     <div id="success"></div>
                     <jsp:useBean id="pet" class="br.com.animalcare.bean.Pet" scope="request"></jsp:useBean>
                     <form name="cadastroAdotante" method="post" action="AdocaoServlet" >

@@ -10,16 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/LogoutOngServlet")
+@WebServlet(name="LogoutOngServlet",  urlPatterns ="/LogoutOngServlet")
 public class LogoutOngServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     
     public LogoutOngServlet() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
@@ -27,7 +28,7 @@ public class LogoutOngServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 	}
 }

@@ -14,20 +14,24 @@ import br.com.animalcare.util.Conexao;
 
 public class DaoPet {
 
+	private static final String SQL_INSERIR_PET = "INSERT INTO tb_pet (nome_pet, idade, genero, obs, id_ong) VALUES (?, ?, ?, ?, ?) ";
+	private static final String SQL_ALTERAR_PET = "UPDATE tb_pet SET nome_pet =?, idade =?, genero =?, obs=? WHERE id_pet =? AND id_ong =? ";
+	private static final String SQL_LISTA_PET_ONG = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, tb_ong.nome_ong, tb_ong.id_ong FROM tb_pet INNER JOIN tb_ong ON tb_pet.id_ong = tb_ong.id_ong WHERE tb_ong.id_ong = ?";
+	private static final String SQL_DELETE = "DELETE FROM tb_pet WHERE id_pet =? AND id_ong =? ";
+	private static final String SQL_BUSCA_PET_ONG = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, tb_ong.nome_ong, tb_ong.cidade FROM tb_pet, tb_ong WHERE tb_pet.id_ong = tb_ong.id_ong ";
+	private static final String SQL_BUSCA_PET_ID = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, tb_ong.id_ong, tb_ong.nome_ong, tb_ong.email FROM tb_pet INNER JOIN tb_ong ON tb_pet.id_ong = tb_ong.id_ong WHERE tb_pet.id_pet = ? ";
+
+	
 	private final Connection conn;
 	
-	public DaoPet() throws SQLException, ClassNotFoundException {
+	public DaoPet() {
 		this.conn = new Conexao().getConnection();
 	}
 	
-	Ong ong = new Ong();
-	
 	public Integer inserirPet(Pet pet) {
 		
-		String sql = "INSERT INTO tb_pet (nome_pet, idade, genero, obs, id_ong) "
-				+ "VALUES (?, ?, ?, ?, ?)";
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps = conn.prepareStatement(SQL_INSERIR_PET, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, pet.getNome_pet());
 			ps.setString(2, pet.getIdade());
 			ps.setString(3, pet.getGenero());
@@ -43,18 +47,11 @@ public class DaoPet {
 			}
 			
 			ps.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
 			System.out.println(e.getMessage());
-		}
-		finally {
-			try 
-			{
-				conn.close();
-			} 
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
+			throw new RuntimeException(e);
 		}
 		return pet.getId_pet();
 	}
@@ -62,11 +59,8 @@ public class DaoPet {
 	public boolean alterarPet(Pet pet) {
 		boolean sucesso = false;
 		
-		String sql = "UPDATE tb_pet SET nome_pet =?, idade =?, genero =?, obs=? "
-						+ " WHERE id_pet =? AND id_ong =? ";
-		
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_ALTERAR_PET);
 			ps.setString(1, pet.getNome_pet());
 			ps.setString(2, pet.getIdade());
 			ps.setString(3, pet.getGenero());
@@ -80,10 +74,11 @@ public class DaoPet {
 				sucesso = true;
 			}
 			ps.close();
-			conn.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
 			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return sucesso;
 	} 
@@ -91,15 +86,8 @@ public class DaoPet {
 	public ArrayList<Pet> listarPet(Ong ong) throws ClassNotFoundException {
 		ArrayList<Pet> listapet = new ArrayList<>();
 		
-		String sql = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, "
-				+ " tb_ong.nome_ong, " 
-				+ " tb_ong.id_ong FROM tb_pet " 
-				+ " INNER JOIN tb_ong " 
-				+ " ON tb_pet.id_ong = tb_ong.id_ong "
-				+ " WHERE tb_ong.id_ong = ?" ;
-
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_LISTA_PET_ONG);
 			ps.setInt(1, ong.getId_ong());
 			
 			ResultSet rs = ps.executeQuery();
@@ -126,10 +114,7 @@ public class DaoPet {
 			}
 			
 			ps.close();
-			conn.close();
-			
-			System.out.println(listapet);
-			
+			fecharConexao();
 		} 
 		catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -141,10 +126,9 @@ public class DaoPet {
 	public boolean excluirPet(Pet pet, Ong ong) {
 		
 		boolean sucesso = false;
-		String sql = "DELETE FROM tb_pet WHERE id_pet = ? AND id_ong = ? ";
 		
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_DELETE);
 			ps.setInt(1, pet.getId_pet());
 			ps.setInt(2, ong.getId_ong());
 			
@@ -152,24 +136,21 @@ public class DaoPet {
 			if(rowsAffect > 0) {
 				sucesso = true;
 			}
-			
 			ps.close();
-			conn.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
 			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		 return sucesso;
 	}
 	
 	public ArrayList<Pet> buscarPetOng() {
 		ArrayList<Pet> listapetOng = new ArrayList<>();
-		String sql = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, "
-				+ "tb_ong.nome_ong, tb_ong.cidade "
-				+ "FROM tb_pet, tb_ong WHERE tb_pet.id_ong = tb_ong.id_ong ";
 		
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_BUSCA_PET_ONG);
 			
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -186,26 +167,19 @@ public class DaoPet {
 				listapetOng.add(pet);
 			}
 			ps.close();
-			conn.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
 			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return listapetOng;
 	}
 	
 	public Pet buscaPetPorId(Pet petEncontrado) {
 		
-		final String BUSCA_PET_SQL = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, "
-				+ "tb_pet.obs, "
-				+ "tb_ong.id_ong, tb_ong.nome_ong, tb_ong.email "
-				+ "FROM tb_pet "
-				+ "INNER JOIN tb_ong "
-				+ "ON tb_pet.id_ong = tb_ong.id_ong "
-				+ "WHERE tb_pet.id_pet = ? ";
-		
 		try {
-			PreparedStatement ps = conn.prepareStatement(BUSCA_PET_SQL);
+			PreparedStatement ps = conn.prepareStatement(SQL_BUSCA_PET_ID);
 			
 			ps.setInt(1, petEncontrado.getId_pet());
 			
@@ -223,11 +197,30 @@ public class DaoPet {
 				
 			}
 			ps.close();
+			fecharConexao();
+		} 
+		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		}
+		
+		return petEncontrado;
+	}
+	
+	public void fecharConexao() throws SQLException {
+		
+		try {
 			conn.close();
 		} 
-		catch (Exception e) {
-			System.out.println(e.getMessage());
+		finally {
+			try 
+			{
+				conn.close();
+			} 
+			catch (SQLException e) {
+				System.out.println(e.getMessage());
+				throw new RuntimeException(e);
+			}
 		}
-		return petEncontrado;
 	}
 }

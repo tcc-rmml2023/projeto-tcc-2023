@@ -4,15 +4,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
+
 <body>
 
 <!-- Topbar Start --> 
-
 <%@include file="barraBotoes.jsp"%> 
-    
 <!-- Topbar End -->  
+
 	<div class="container py-5">
         <div class="row py-5">
             <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
@@ -30,7 +31,9 @@
 						
 						<input type="submit" class="btn btn-primary py-2 px-4"  value="Entrar" />
 				</form>
-				<div>${msg}</div>
+				<br>
+				<!-- Mensagem erro ao tentar logar -->
+				<div><h5>${msg}</h5></div>
 			</div>
 		</div>
 	</div>

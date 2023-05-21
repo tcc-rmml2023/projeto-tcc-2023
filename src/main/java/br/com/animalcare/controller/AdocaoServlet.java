@@ -14,7 +14,7 @@ import br.com.animalcare.bean.Email;
 import br.com.animalcare.bean.Pet;
 import br.com.animalcare.dao.DaoPet;
 
-@WebServlet("/AdocaoServlet")
+@WebServlet(name="AdocaoServlet", urlPatterns = "/AdocaoServlet")
 public class AdocaoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -43,7 +43,6 @@ public class AdocaoServlet extends HttpServlet {
 			request.setAttribute("emailOng", pet.getEmailOng());
 			
 			rd.forward(request, response);
-			
 		}		
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -59,7 +58,6 @@ public class AdocaoServlet extends HttpServlet {
 			mail.setEmailCC(request.getParameter("emailOng"));
 			mail.setEmailTo(request.getParameter("email"));
 			mail.setAssunto("Solicitação de adoção");
-			
 			
 			StringBuffer mensagem = new StringBuffer();
 			
@@ -117,10 +115,8 @@ public class AdocaoServlet extends HttpServlet {
 			else {
 				
 				RequestDispatcher rd = request.getRequestDispatcher("solicitacao_adocao.jsp");
-				request.setAttribute("msg", "Não foi possível realizar sua solicitação."
-						+ " Tente de novo.");
+				request.setAttribute("msg", "Não foi possível realizar sua solicitação. Tente de novo.");
 				rd.forward(request, response);
-	            
 	        }
 		} 
 		catch (Exception e) {

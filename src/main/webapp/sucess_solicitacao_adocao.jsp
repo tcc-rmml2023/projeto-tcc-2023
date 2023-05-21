@@ -5,12 +5,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->
-<%@include file="../../../../../../cabecalho.jsp"%>
+<!-- Head Start -->
+<%@include file="cabecalho.jsp"%>
+<!-- Head End -->
 
 <body>
     <!-- Topbar Start -->
-    <%@include file="../../../../../barraBotoes.jspoes.jsp"%>
+    <%@include file="barraBotoes.jsp"%>
     <!-- Topbar End -->
 
     <!-- Contact Start -->

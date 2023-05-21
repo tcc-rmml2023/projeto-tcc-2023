@@ -1,7 +1,6 @@
 package br.com.animalcare.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import br.com.animalcare.bean.Ong;
 import br.com.animalcare.dao.DaoOng;
 
-@WebServlet("/AtualizarOngServlet")
+@WebServlet(name="AtualizarOngServlet", urlPatterns = "/AtualizarOngServlet")
 public class AtualizarOngServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
@@ -53,7 +52,8 @@ public class AtualizarOngServlet extends HttpServlet {
 			rd.forward(request, response);	
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -107,8 +107,9 @@ public class AtualizarOngServlet extends HttpServlet {
 				response.sendRedirect("PetServlet?action=listarPetsPorOng");
 			}
 		} 
-		catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 }

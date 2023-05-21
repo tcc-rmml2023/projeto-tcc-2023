@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -12,8 +13,10 @@
 	
 lang="pt-br">
 
-<!-- link head -->
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
 
@@ -21,10 +24,12 @@ lang="pt-br">
      <%@include file="barraBotoesOng.jsp"%>
     <!-- Topbar End -->
     
-    <!-- Ong logada -->
-    <jsp:include page="ongLogada.jsp"></jsp:include>
+    <!-- Ong logada Start -->
+    <jsp:include page="ongLogada.jsp" />
+    <!-- Ong logada End -->
     
-    <div> ${msg}</div>
+    <!-- Mensagem de inclusão pet -->
+    <div><h6>${msg}</h6></div>
      
      <div>
      	<p><a>Preencha o formulário abaixo com as informações do pet!</a><br><br>
@@ -32,7 +37,7 @@ lang="pt-br">
   
       <form name="inserir" method="POST" enctype="multipart/form-data" action="InserirPetServlet">
       
-       	 <input type="text" class="form-control-cep p-4" name="nome_pet" id="nome" value=""
+       	 <input type="text" class="form-control-cep p-4" name="nome_pet" id="nome_pet" value=""
            placeholder="Nome do pet" autofocus required="required" 
            data-validation-required-message="Please enter your message"><br><br>
            

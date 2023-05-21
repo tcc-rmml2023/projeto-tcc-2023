@@ -1,7 +1,6 @@
 package br.com.animalcare.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.animalcare.bean.Ong;
 import br.com.animalcare.dao.DaoOng;
 
-@WebServlet({ "/OngServlet", "/inserir" })
+@WebServlet(name="OngServlet", urlPatterns ="/OngServlet")
 public class OngServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -60,13 +59,16 @@ public class OngServlet extends HttpServlet {
 			if (cadastrado) {
 				RequestDispatcher rd = request.getRequestDispatcher("sucess_cadastro_ong.jsp");
 				rd.forward(request, response);
-			} else {
-				request.setAttribute("erro", "Cadastro não realizado. Verifique as informações!");
+			} 
+			else {
+				request.setAttribute("msg", "Cadastro não realizado. Verifique as informações!");
 				RequestDispatcher rd = request.getRequestDispatcher("CadastrarUsuarioOngServlet");
 				rd.forward(request, response);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+		} 
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 }

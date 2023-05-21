@@ -11,14 +11,15 @@
 </head>
 <body>
 	<div>
-    	<a>
-          <%
+    	<h5>
+			 <%
 			 Ong ong = (Ong) session.getAttribute("usuarioLogado");
 			 if(ong.getEmail() != null){
 			 out.println(ong.getNome_ong());
 			 }
-		 %>
-     </a><br><br>
+			 %>    		
+    		</h5>
+     	<br><br>
     </div>
 </body>
 </html>

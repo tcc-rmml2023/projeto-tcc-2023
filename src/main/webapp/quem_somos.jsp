@@ -3,13 +3,16 @@
 <!DOCTYPE html>
 <html>
 
-<!-- link head -->
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
+
 <body>
 
-<!-- Topbar Start -->
-<%@include file="barraBotoes.jsp"%>
-<!-- Topbar End -->
+	<!-- Topbar Start -->
+	<%@include file="barraBotoes.jsp"%>
+	<!-- Topbar End -->
+
 <div class="container py-5">
 <div class="row pt-6">
             <div class="d-flex flex-column text-center mb-5">

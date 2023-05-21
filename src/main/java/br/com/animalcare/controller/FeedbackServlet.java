@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.animalcare.bean.Email;
 
-@WebServlet("/FeedbackServlet")
+@WebServlet(name="FeedbackServlet", urlPatterns = "/FeedbackServlet")
 public class FeedbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +21,6 @@ public class FeedbackServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,7 +41,7 @@ public class FeedbackServlet extends HttpServlet {
 			mensagem.append("<h2 align='center'>AnimalCare - Dúvidas, sugestões, reclamações.</h2>");
 			mensagem.append("<br/>");
 
-			mensagem.append("<img src=\"cid:image\">");
+			//mensagem.append("<img src=\"cid:image\">");
 
 			mensagem.append("<h5>Feedback</h5>");
 			mensagem.append("Nome: ");
@@ -61,7 +60,7 @@ public class FeedbackServlet extends HttpServlet {
 
 				RequestDispatcher rd = request.getRequestDispatcher("feedback.jsp");
 				request.setAttribute("msg", "Mensagem enviada com sucesso."
-						+ "Obrigado por enviar seu feedback.");
+						+ " Obrigado por enviar seu feedback.");
 				rd.forward(request, response);
 
 			} 
@@ -74,7 +73,8 @@ public class FeedbackServlet extends HttpServlet {
 			}
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 }

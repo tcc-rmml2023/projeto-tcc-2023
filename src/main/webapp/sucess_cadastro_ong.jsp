@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
 
 <body>
     <!-- Topbar Start -->
