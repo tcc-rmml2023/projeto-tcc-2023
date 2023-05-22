@@ -46,7 +46,7 @@ public class GerarRelatorioServlet extends HttpServlet {
 			PdfWriter.getInstance(doc, response.getOutputStream());
 			
 			doc.open();
-			doc.add(new Paragraph("Lista de pets cadastrdos na AnimalCare:"));
+			doc.add(new Paragraph("Lista de pets cadastrados na AnimalCare:"));
 			doc.add(new Paragraph(" "));
 			
 			PdfPTable tabela = new PdfPTable(5);

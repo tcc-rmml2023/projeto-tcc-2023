@@ -58,7 +58,7 @@ lang="pt-br">
           <br><br>
                                   
         <input type="submit" type="button" class="btn btn-primary py-2 px-4" 
-               name="enviar" value="Inserir"><br><br>  
+               name="enviar" value="Cadastrar"><br><br>  
                
       </form>
       

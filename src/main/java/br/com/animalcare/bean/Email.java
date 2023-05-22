@@ -2,6 +2,9 @@ package br.com.animalcare.bean;
 
 import java.util.Properties;
 
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.FileDataSource;
 import jakarta.mail.Message;
 import jakarta.mail.PasswordAuthentication;
 import jakarta.mail.Session;
@@ -83,20 +86,19 @@ public class Email {
 		session.setDebug(true);
 
 		try {
-			//inclusão imagem no corpo do e-mail
-			//MimeBodyPart logoPart = new MimeBodyPart();
+			MimeBodyPart logoPart = new MimeBodyPart();
 			
-			//DataSource source = new FileDataSource("C:\\img\\icone.png");
+			DataSource source = new FileDataSource("C:\\img\\icone.png");
             
-			//logoPart.setDataHandler(new DataHandler(source));
-            //logoPart.setFileName("logo.png"); 
+			logoPart.setDataHandler(new DataHandler(source));
+            logoPart.setFileName("logo.png"); 
 
             MimeBodyPart textBodyPart = new MimeBodyPart();
             textBodyPart.setContent(this.message,"text/html;charset=utf-8");
 			
             MimeMultipart mimeMultpart = new MimeMultipart();
             mimeMultpart.addBodyPart(textBodyPart);
-            //mimeMultpart.addBodyPart(logoPart);
+            mimeMultpart.addBodyPart(logoPart);
 			
 			Message message = new MimeMessage(session);
 			
