@@ -32,7 +32,6 @@
             	
                   <c:forEach items="${lista}" var="obj">
                   <div class="card border-0 mb-2">
-                  		
                   		<table class="tabela" border="1">
                   			<tr><td> ID Pet</td><td><c:out value="${obj.id_pet}"/></td></tr>
                         	<tr><td> Nome</td><td><c:out value="${obj.nome_pet}"/></td></tr>
@@ -44,22 +43,22 @@
                         </table>
                         <a href="AlterarPetServlet?id_pet=${obj.id_pet}" class="btn btn-primary-crud py-2 px-4">Alterar</a>
                   	    <a href="ExcluirPetServlet?id_pet=${obj.id_pet}" class="btn btn-primary-crud py-2 px-4">Excluir</a>
-                      
-                       <table border="1">
-                       <tr>
-                       <td>
-                       <c:if test="${obj.imagem.imagemBase64!=null}">
-                      		 <c:forEach items="${obj.imagem.imagemBase64}" var="img">
-                       				<img alt="Imagem Pet" width="300" height="200" src="${img}">
-                       			</c:forEach>
-                        </c:if>
-                       </td>
-                       </tr>
-                       </table>
-                       </div>
-                       
-                  		</c:forEach>
-                    </div>
+                      <div>
+                      	 <table border="1">
+                        	<tr>
+                        		<td>
+                        			<c:if test="${obj.imagem.imagemBase64!=null}">
+                        				<c:forEach items="${obj.imagem.imagemBase64}" var="img">
+                        					<img alt="Imagem Pet" width="300" height="200" src="${img}">
+                        				</c:forEach>
+                        			</c:if>
+                        		</td>
+                        	</tr>
+                          </table>
+                        </div>
+                      </div>  
+                    </c:forEach>
+                   </div>
                 </div>
             <div class="col-lg-12">
                 <nav aria-label="Page navigation">

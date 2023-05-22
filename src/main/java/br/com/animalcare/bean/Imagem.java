@@ -37,9 +37,4 @@ public class Imagem implements Serializable{
 	public void setExtencao(List<String> extencao) {
 		this.extencao = extencao;
 	}
-
-	@Override
-	public String toString() {
-		return "Imagem [id_imagem=" + id_imagem + ", imagemBase64=" + imagemBase64 + ", extencao=" + extencao + "]";
-	}
 }

@@ -25,22 +25,6 @@ public class Ong implements Serializable{
 	private ArrayList<Pet> pets;
 	private Pet pet;
 	
-	public Ong(String nome_ong, String telefone, Long cnpj, Integer cep, String logradouro, Integer numero, String complemento, String bairro, String cidade, String uf, String email, String senha) {
-
-		this.nome_ong = nome_ong;
-		this.telefone = telefone;
-		this.cnpj = cnpj;
-		this.cep = cep;
-		this.logradouro = logradouro;
-		this.numero = numero;
-		this.complemento = complemento;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.uf = uf;
-		this.email = email;
-		this.senha = senha;
-		
-	}
 	public Ong(Integer id_ong, String nome_ong, String telefone, Long cnpj, Integer cep, String logradouro, Integer numero, String complemento, String bairro, String cidade, String uf, String email, String senha) {
 
 		this.id_ong = id_ong;

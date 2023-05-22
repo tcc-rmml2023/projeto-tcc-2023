@@ -7,8 +7,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- link head -->
+<!-- Head Start -->
 <%@include file="cabecalho.jsp"%>
+<!-- Head End -->
 
 <body>
     <!-- Topbar Start -->
@@ -25,8 +26,7 @@
             <div class="col-lg-4 mb-4">
                 <div class="card border-0 mb-2">
                   
-                 		<c:forEach items="${lista }" var="obj">
-                  		<p>	
+                 		<c:forEach items="${lista}" var="obj">
                   		<table class="tabela" border="1" >
                   			<tr><td> ID</td><td><c:out value="${obj.id_pet}"/></td></tr>
                         	<tr><td> Nome</td><td><c:out value="${obj.nome_pet}"/></td></tr>
@@ -35,12 +35,20 @@
                             <tr><td> Observação</td><td><c:out value="${obj.obs}"/></td></tr>
                             <tr><td> Ong</td><td><c:out value="${obj.ong_nome}"/></td></tr>
                             <tr><td> Cidade</td><td><c:out value="${obj.ong_cidade}"/></td></tr> 
-                            
                         </table>
-                        <a href="AdocaoServlet?id_pet=${obj.id_pet}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">ADOTE</a>	
-                        </p>
-                       
-                  		</c:forEach>
+                      	<a href="AdocaoServlet?id_pet=${obj.id_pet}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">ADOTE</a>	
+                        <table border="1">
+                        	<tr>
+                        		<td>
+                        			<c:if test="${obj.imagem.imagemBase64!=null}">
+                        				<c:forEach items="${obj.imagem.imagemBase64}" var="img">
+                        					<img alt="Imagem Pet" width="300" height="200" src="${img}">
+                        				</c:forEach>
+                        			</c:if>
+                        		</td>
+                        	</tr>
+                        </table>
+                  	  </c:forEach>
                     </div>
                 </div>
             </div>

@@ -77,16 +77,16 @@ public class Email {
 			
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(myMail, passWord);
-				
 			}
 		});
 		
 		session.setDebug(true);
 
 		try {
+			//inclusão imagem no corpo do e-mail
 			//MimeBodyPart logoPart = new MimeBodyPart();
 			
-			//DataSource source = new FileDataSource("C:\\img\\icone.ico");
+			//DataSource source = new FileDataSource("C:\\img\\icone.png");
             
 			//logoPart.setDataHandler(new DataHandler(source));
             //logoPart.setFileName("logo.png"); 

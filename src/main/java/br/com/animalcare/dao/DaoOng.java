@@ -12,21 +12,26 @@ import br.com.animalcare.bean.Ong;
 import br.com.animalcare.util.Conexao;
 
 public class DaoOng {
-
+	
+	private static final String SQL_INSERIR_ONG = "INSERT INTO tb_ong (nome_ong, telefone, cnpj, cep, logradouro, numero, complemento , bairro, cidade, uf, email, senha) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String SQL_UPDATE_ONG = "UPDATE tb_ong SET nome_ong = ?, telefone = ?, cnpj = ?, cep = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, uf = ?, email = ?, senha = ? WHERE id_ong = ? ";
+	private static final String SQL_SELECT_BY_ID = "SELECT * FROM tb_ong WHERE id_ong = ?";
+	private static final String SQL_DELETE_ONG = "DELETE FROM tb_ong WHERE id_ong = ?";
+	private static final String SQL_SELECT_BY_NAME = "SELECT * FROM tb_ong WHERE nome_ong LIKE ?";
+	private static final String SQL_SELECT_BY_EMAIL = " SELECT * FROM tb_ong WHERE email = ? AND senha = ? ";
+	
 	private final Connection conn;
 
-	public DaoOng() throws SQLException, ClassNotFoundException {
+	public DaoOng() {
 		this.conn = new Conexao().getConnection();
 	}
 
 	public boolean inserirOng(Ong ong) {
 
 		boolean sucesso = false;
-		String sql = "INSERT INTO tb_ong (nome_ong, telefone, cnpj, cep, logradouro, numero, complemento ,"
-				+ " bairro, cidade, uf, email, senha) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps = conn.prepareStatement(SQL_INSERIR_ONG, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, ong.getNome_ong());
 			ps.setString(2, ong.getTelefone());
@@ -53,10 +58,11 @@ public class DaoOng {
 			}
 			
 			ps.close();
-			conn.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return sucesso;
 	}
@@ -64,12 +70,9 @@ public class DaoOng {
 	public boolean alterarOng(Ong ong) {
 		
 		boolean sucesso = false;
-		String sql = "UPDATE tb_ong SET nome_ong = ?, telefone = ?, cnpj = ?, cep = ?, "
-				+ " logradouro = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, uf = ?, "
-				+ " email = ?, senha = ? WHERE id_ong = ? ";
 
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_UPDATE_ONG);
 
 			ps.setString(1, ong.getNome_ong());
 			ps.setString(2, ong.getTelefone());
@@ -91,9 +94,11 @@ public class DaoOng {
 				sucesso = true;
 			}
 			ps.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return sucesso;
 	}
@@ -102,10 +107,8 @@ public class DaoOng {
 		
 		Ong ongEncontrada = null;
 		
-		String sql = "SELECT * FROM tb_ong WHERE id_ong = ?";
-
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_ID);
 
 			ps.setLong(1, ong.getId_ong());
 
@@ -128,19 +131,20 @@ public class DaoOng {
 						rsOng.getString(13));
 			}
 			ps.close();
-			conn.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return ongEncontrada;
 	}
 
 	public boolean excluirOng(Ong ong) {
 		boolean sucesso = false;
-		String sql = "DELETE FROM tb_ong WHERE id_ong = ?";
+		
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_DELETE_ONG);
 
 			ps.setInt(1, ong.getId_ong());
 
@@ -149,10 +153,11 @@ public class DaoOng {
 				sucesso = true;
 			}
 			ps.close();
-			conn.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return sucesso;
 	}
@@ -161,9 +166,8 @@ public class DaoOng {
 
 		List<Ong> listarOngs = new ArrayList<>();
 
-		String sql = "SELECT * FROM tb_ong WHERE nome_ong LIKE ?";
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_NAME);
 
 			ps.setString(1, "%" + ongEnt.getNome_ong() + "%");
 
@@ -191,10 +195,11 @@ public class DaoOng {
 			}
 			rsOng.close();
 			ps.close();
-			conn.close();
+			fecharConexao();
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return listarOngs;
 	}
@@ -202,10 +207,9 @@ public class DaoOng {
 	public Ong buscarOngPorEmail(String email, String senha) {
 
 		Ong usuarioOng = null;
-		String sql = " SELECT * FROM tb_ong WHERE email = ? AND senha = ? ";
 
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_EMAIL);
 
 			ps.setString(1, email);
 			ps.setString(2, senha);
@@ -229,11 +233,29 @@ public class DaoOng {
 
 			}
 			ps.close();
-			conn.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
+			fecharConexao();
+		} 
+		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 		return usuarioOng;
+	}
+	
+	public void fecharConexao() throws SQLException {
+		
+		try {
+			conn.close();
+		} 
+		finally {
+			try 
+			{
+				conn.close();
+			} 
+			catch (SQLException e) {
+				System.out.println(e.getMessage());
+				throw new RuntimeException(e);
+			}
+		}
 	}
 }

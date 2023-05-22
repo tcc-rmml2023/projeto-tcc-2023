@@ -33,7 +33,7 @@
                 <div><h6>${msg}</h6></div><br><b></b>
                 
                     <div id="success"></div>
-                    <jsp:useBean id="pet" class="br.com.animalcare.bean.Pet" scope="request"></jsp:useBean>
+                    <jsp:useBean id="pet" class="br.com.animalcare.bean.Pet" scope="request" />
                     <form name="cadastroAdotante" method="post" action="AdocaoServlet" >
                    
                         <div class="control-group">

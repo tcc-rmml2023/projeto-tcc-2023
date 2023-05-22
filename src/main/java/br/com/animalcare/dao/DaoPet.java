@@ -17,11 +17,10 @@ public class DaoPet {
 	private static final String SQL_INSERIR_PET = "INSERT INTO tb_pet (nome_pet, idade, genero, obs, id_ong) VALUES (?, ?, ?, ?, ?) ";
 	private static final String SQL_ALTERAR_PET = "UPDATE tb_pet SET nome_pet =?, idade =?, genero =?, obs=? WHERE id_pet =? AND id_ong =? ";
 	private static final String SQL_LISTA_PET_ONG = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, tb_ong.nome_ong, tb_ong.id_ong FROM tb_pet INNER JOIN tb_ong ON tb_pet.id_ong = tb_ong.id_ong WHERE tb_ong.id_ong = ?";
-	private static final String SQL_DELETE = "DELETE FROM tb_pet WHERE id_pet =? AND id_ong =? ";
+	private static final String SQL_DELETE = "DELETE FROM tb_pet WHERE id_pet =? AND id_ong =?";
 	private static final String SQL_BUSCA_PET_ONG = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, tb_ong.nome_ong, tb_ong.cidade FROM tb_pet, tb_ong WHERE tb_pet.id_ong = tb_ong.id_ong ";
 	private static final String SQL_BUSCA_PET_ID = "SELECT tb_pet.id_pet, tb_pet.nome_pet, tb_pet.idade, tb_pet.genero, tb_pet.obs, tb_ong.id_ong, tb_ong.nome_ong, tb_ong.email FROM tb_pet INNER JOIN tb_ong ON tb_pet.id_ong = tb_ong.id_ong WHERE tb_pet.id_pet = ? ";
 
-	
 	private final Connection conn;
 	
 	public DaoPet() {
@@ -83,7 +82,7 @@ public class DaoPet {
 		return sucesso;
 	} 
 	
-	public ArrayList<Pet> listarPet(Ong ong) throws ClassNotFoundException {
+	public ArrayList<Pet> listarPet(Ong ong) {
 		ArrayList<Pet> listapet = new ArrayList<>();
 		
 		try {
@@ -117,6 +116,10 @@ public class DaoPet {
 			fecharConexao();
 		} 
 		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		}
+		catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 			throw new RuntimeException(e);
 		}
@@ -164,12 +167,23 @@ public class DaoPet {
 				pet.setOng_nome(rs.getString("nome_ong"));
 				pet.setOng_cidade(rs.getString("cidade"));
 
+				DaoImagem daoImagem = new DaoImagem();
+				Imagem imagem = daoImagem.listaImagens(pet.getId_pet());
+				
+				if(imagem != null) {
+					pet.setImagem(imagem);
+				}
+				
 				listapetOng.add(pet);
 			}
 			ps.close();
 			fecharConexao();
 		} 
 		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		} 
+		catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 			throw new RuntimeException(e);
 		}

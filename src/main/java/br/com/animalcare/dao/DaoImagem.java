@@ -12,6 +12,9 @@ import br.com.animalcare.util.Conexao;
 
 public class DaoImagem {
 
+	private static final String INSERIR_IMAGEM = "INSERT INTO tb_imagem (imagemBase64, extensao, id_pet) VALUES (?, ?, ?)";
+	private static final String SELECT_IMAGEM = "SELECT  tb_imagem.imagemBase64, tb_imagem.extensao FROM tb_imagem  INNER JOIN tb_pet ON tb_pet.id_pet = tb_imagem.id_pet WHERE tb_imagem.id_pet = ? ";
+	
 	private final Connection conn;
 
 	public DaoImagem() throws SQLException, ClassNotFoundException {
@@ -20,11 +23,9 @@ public class DaoImagem {
 
 	public boolean inserir(Integer id, Imagem imagem) {
 
-		String sql = "INSERT INTO tb_imagem (imagemBase64, extensao, id_pet) VALUES (?, ?, ?)";
-
 		try {
 			boolean sucesso = false;
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(INSERIR_IMAGEM);
 			int i = 0;
 			int rowsAffect = 0;
 
@@ -40,7 +41,7 @@ public class DaoImagem {
 			if (rowsAffect > 0) {
 				sucesso = true;
 			}
-
+			fecharConexao();
 			return sucesso;
 		}
 
@@ -53,14 +54,9 @@ public class DaoImagem {
 	public Imagem listaImagens(Integer id) {
 
 		Imagem imagem = new Imagem();
-		String sql = "SELECT  tb_imagem.imagemBase64, tb_imagem.extensao " 
-				+ " FROM tb_imagem "
-				+ " INNER JOIN tb_pet "
-				+ " ON tb_pet.id_pet = tb_imagem.id_pet " 
-				+ " WHERE tb_imagem.id_pet = ? ";
 
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(SELECT_IMAGEM);
 			ps.setInt(1, id);
 
 			List<String> imagemBase64 = new ArrayList<>();
@@ -81,14 +77,30 @@ public class DaoImagem {
 			imagem.setExtencao(extensao);
 
 			ps.close();
+			fecharConexao();
 			return imagem;
 		}
-
 		catch (SQLException e) {
-			
 			System.out.println(e.getMessage());
 			throw new RuntimeException(e);
 
+		}
+	}
+	
+	public void fecharConexao() throws SQLException {
+		
+		try {
+			conn.close();
+		} 
+		finally {
+			try 
+			{
+				conn.close();
+			} 
+			catch (SQLException e) {
+				System.out.println(e.getMessage());
+				throw new RuntimeException(e);
+			}
 		}
 	}
 }

@@ -22,7 +22,8 @@ public class AdocaoServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
 		String id = request.getParameter("id_pet");
 		int id_pet = Integer.parseInt(id);
@@ -50,7 +51,8 @@ public class AdocaoServlet extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		try {
 			
 			Email mail = new Email();
@@ -64,7 +66,7 @@ public class AdocaoServlet extends HttpServlet {
 			mensagem.append("<h2 align='center'>AnimalCare - Solicitação de adoção</h2>");
 			mensagem.append("<br/>");
 			
-			mensagem.append("<img src=\"cid:image\">");
+			//mensagem.append("<img src=\"cid:image\">");
 			
 			mensagem.append("<h5>Informações do pet</h5>");
 			mensagem.append("ID pet: ");

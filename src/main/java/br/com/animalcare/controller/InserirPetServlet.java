@@ -44,11 +44,13 @@ public class InserirPetServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		try {
-			DaoPet daoPet = new DaoPet();
 		    Ong ong = new Ong();
+		    
 		    Imagem imagem = new Imagem();
-			Pet pet = new Pet();
 			DaoImagem daoImagem = new DaoImagem();
+			
+			Pet pet = new Pet();
+			DaoPet daoPet = new DaoPet();
 			
 			HttpSession session = request.getSession();
 			ong = (Ong) session.getAttribute("usuarioLogado");
