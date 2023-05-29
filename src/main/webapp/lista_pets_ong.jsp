@@ -21,7 +21,7 @@
     <jsp:include page="ongLogada.jsp" />
     <!-- Ong logada End -->
    
-        <div class="d-flex flex-column text-center mb-5 pt-5">
+        <div class="text-right mb-5 pt-5">
         
             <h6 class="display-4 m-0"><span class="text-primary">Lista de pets</span></h6></div>
         <div class="row pb-3">
@@ -48,9 +48,12 @@
                         	<tr>
                         		<td>
                         			<c:if test="${obj.imagem.imagemBase64!=null}">
-                        				<c:forEach items="${obj.imagem.imagemBase64}" var="img">
-                        					<img alt="Imagem Pet" width="300" height="200" src="${img}">
+                        				<div class="row">
+                        					<c:forEach items="${obj.imagem.imagemBase64}" var="img">
+                        					<img alt="Imagem Pet" style="display:inline-block" width="150px" height="200" src="${img}">
                         				</c:forEach>
+                        				</div>
+                        				
                         			</c:if>
                         		</td>
                         	</tr>
