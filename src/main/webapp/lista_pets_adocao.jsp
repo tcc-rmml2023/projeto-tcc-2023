@@ -24,7 +24,7 @@
         </div>
         <div >
             <div class="row pb-1">
-            	<div class="text mb-5 pt-5">
+            	<div class="text mb-5 pt-4">
                 		<c:forEach items="${lista}" var="obj"> 
                 				
                      	   <div class="col-lg-5 mb-1"  > 
